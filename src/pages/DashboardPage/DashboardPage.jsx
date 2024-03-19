@@ -14,7 +14,6 @@ function DashboardPage() {
   useEffect(() => {
     if (!isAuth) return;
     dispatch(getCustomersThunk());
-    // dispatch(getTransCategoriesThunk(token));
   }, [
     dispatch,
     // token,
