@@ -1,35 +1,83 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Suspense, lazy, useEffect } from "react";
+// import Loader from "./shared/components/Loader";
+import { Navigate, Route, Routes } from "react-router-dom";
+import SharedLayout from "./SharedLayout";
+import NotificationToast from "./shared/components/NotificationToastify/NotificationToast";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsAuth } from "./redux/selectors";
+import { currentUserThunk } from "./redux/Thunks/userThunk";
+import PrivateRoute from "./Guard/PrivateRoute";
+import Loader from "./shared/components/Loader/Loader";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import Register from "./pages/LoginPage/Register";
+import PublicRoute from "./Guard/PublicRoute";
+
+// const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
+// const LoginPage = lazy(() => import("./pages/LoginPage/"));
+const DashboardPage = lazy(() => import("./pages/DashboardPage/DashboardPage"));
+const ProductsPage = lazy(() => import("./pages/ProductsPage/ProductsPage"));
+// const SuppliersPage = lazy(() => import("./pages/"));
+// const Favorites = lazy(() => import('./pages/Favorites/Favorites'));
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch();
+  const token = useSelector(selectIsAuth);
+
+  useEffect(() => {
+    if (!token) return;
+    dispatch(currentUserThunk());
+  }, [dispatch, token]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<PublicRoute><LoginPage /></PublicRoute>} />
+          <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+
+          <Route path="/" element={<SharedLayout />}>
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <DashboardPage />
+                </PrivateRoute>
+              }
+            />
+            {/* <Route
+              path="/customers"
+              element={
+                <PrivateRoute>
+                  <CustomersPage />
+                </PrivateRoute>
+              }
+            /> */}
+            <Route
+              path="/products"
+              element={
+                <PrivateRoute>
+                  <ProductsPage />
+                </PrivateRoute>
+              }
+            />
+{/* <Route
+              path="/suppliers"
+              element={
+                <PrivateRoute>
+                  <SuppliersPage />
+                </PrivateRoute>
+              }
+            /> */}
+
+
+
+          </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Suspense>
+      <NotificationToast />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
