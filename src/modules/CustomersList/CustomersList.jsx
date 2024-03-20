@@ -3,32 +3,31 @@ import { Box } from "@mui/material";
 // import Header from "components/Header";
 import { DataGrid } from "@mui/x-data-grid";
 
-
-const CustomersList = ({customers, isLoading}) => {
+const CustomersList = ({ customers, isLoading }) => {
   // const theme = useTheme();
   // const { data } = useSelector(selectCustomers);
-  // console.log(customers);
+  console.log(customers);
 
   const columns = [
     {
       field: "name",
       headerName: "Name",
-      flex: 1,
-    },
-    {
-      field: "image",
-      headerName: "Image",
       flex: 0.5,
     },
+    // {
+    //   field: "image",
+    //   headerName: "Image",
+    //   flex: 0.5,
+    // },
     {
       field: "email",
       headerName: "Email",
-      flex: 1,
+      flex: 0.5,
     },
     {
       field: "spent",
       headerName: "Spent",
-      flex: 1,
+      flex: 0.5,
     },
     // {
     //   field: "phoneNumber",
@@ -55,13 +54,13 @@ const CustomersList = ({customers, isLoading}) => {
     // },
   ];
 
-
   return (
     <Box m="1.5rem 2.5rem">
       {/* <Header title="CUSTOMERS" subtitle="List of Customers" /> */}
       <Box
         mt="40px"
-        height="75vh"
+        // height="75vh"
+        height="100%"
         sx={{
           "& .MuiDataGrid-root": {
             // border: "none",
@@ -74,9 +73,7 @@ const CustomersList = ({customers, isLoading}) => {
             color: "#768173",
             borderBottom: "none",
           },
-          "& .css-yrdy0g-MuiDataGrid-columnHeaderRow": {
-
-          },
+          "& .css-yrdy0g-MuiDataGrid-columnHeaderRow": {},
           "& .MuiDataGrid-virtualScroller": {
             // backgroundColor: ,
           },
@@ -114,12 +111,9 @@ CustomersList.propTypes = {
   isLoading: PropTypes.any,
 };
 
-
 export default CustomersList;
 
-
 // ================================================================
-
 
 // import PropTypes from "prop-types";
 // import { Sheet, Table } from "@mui/joy";
@@ -158,8 +152,8 @@ export default CustomersList;
 //   //   if (!isAuth) return;
 //   //   dispatch(getCustomersThunk())
 //   //   // dispatch(getTransCategoriesThunk(token));
-//   // }, [dispatch, 
-//   //   // token, 
+//   // }, [dispatch,
+//   //   // token,
 //   //   isAuth
 //   // ]);
 
@@ -168,7 +162,6 @@ export default CustomersList;
 //     columns,
 //     getCoreRowModel: getCoreRowModel(),
 //   });
-
 
 //   return (
 //     <Sheet sx={{ borderRadius: 8 }}>
@@ -251,7 +244,6 @@ export default CustomersList;
 // CustomersList.propTypes = {
 //   customers: PropTypes.any,
 // };
-
 
 // ============================================
 

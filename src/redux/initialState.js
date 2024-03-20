@@ -25,6 +25,7 @@ export const initialUserState = {
 
   export const initialListsState = {
     customers: [],
+    recentCustomers: [],
     // categories: [],  
   };
 

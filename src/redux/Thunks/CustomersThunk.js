@@ -5,7 +5,12 @@
 // import { addCustomer, deleteCustomer, getCustomers, updateCustomer } from 'services/customersApi';
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addCustomer, deleteCustomer, getCustomers, updateCustomer } from "../../services/customersApi";
+import {
+  addCustomer,
+  deleteCustomer,
+  getCustomers,
+  updateCustomer,
+} from "../../services/customersApi";
 import { currentUserThunk } from "./userThunk";
 
 export const getCustomersThunk = createAsyncThunk(

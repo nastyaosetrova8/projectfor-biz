@@ -15,6 +15,7 @@ import PublicRoute from "./Guard/PublicRoute";
 // const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 // const LoginPage = lazy(() => import("./pages/LoginPage/"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage/DashboardPage"));
+const CustomersPage = lazy(() => import("./pages/CustomersPage/CustomersPage"));
 const ProductsPage = lazy(() => import("./pages/ProductsPage/ProductsPage"));
 // const SuppliersPage = lazy(() => import("./pages/"));
 // const Favorites = lazy(() => import('./pages/Favorites/Favorites'));
@@ -44,14 +45,14 @@ function App() {
                 </PrivateRoute>
               }
             />
-            {/* <Route
+            <Route
               path="/customers"
               element={
                 <PrivateRoute>
                   <CustomersPage />
                 </PrivateRoute>
               }
-            /> */}
+            />
             <Route
               path="/products"
               element={

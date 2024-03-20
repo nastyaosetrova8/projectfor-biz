@@ -3,6 +3,7 @@ import { instance } from "./api";
 
 export const getCustomers = async () => {
   const { data } = await instance.get("/customers");
+  console.log(data)
   return data;
 };
 

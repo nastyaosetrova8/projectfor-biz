@@ -1,15 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addCustomerThunk, editCustomerThunk, getCustomersThunk } from "../Thunks/CustomersThunk";
+import {
+  addCustomerThunk,
+  editCustomerThunk,
+  getCustomersThunk,
+} from "../Thunks/CustomersThunk";
 import { initialListsState } from "../initialState";
 
 const customersSlice = createSlice({
-  name: 'customers',
+  name: "customers",
   initialState: initialListsState,
-  extraReducers: builder =>
+  extraReducers: (builder) =>
     builder
 
       .addCase(getCustomersThunk.fulfilled, (state, { payload }) => {
-        state.customers = payload;
+        state.customers = payload.customers;
+        state.recentCustomers = payload.recentCustomers;
       })
 
       .addCase(addCustomerThunk.fulfilled, (state, { payload }) => {
@@ -17,7 +22,7 @@ const customersSlice = createSlice({
       })
 
       .addCase(editCustomerThunk.fulfilled, (state, { payload }) => {
-        const index = state.customers.findIndex(item => item.id === payload);
+        const index = state.customers.findIndex((item) => item.id === payload);
         state.customers.splice(index, 1);
       }),
 

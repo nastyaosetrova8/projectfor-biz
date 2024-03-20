@@ -9,7 +9,7 @@ import { instance } from "./api";
 export const getProducts = async ({page, pageSize, sort, search}) => {
   const { data } = await instance.get(`/products?page=${page}&pageSize=${pageSize}&sort=${sort}&search=${search}`)
   // ("/products", params: {page, pageSize, sort, search});
-  // console.log(data);
+  console.log(data);
   return data;
 };
 

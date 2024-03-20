@@ -1,45 +1,37 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { selectCustomers, selectIsAuth, selectIsLoading } from "../../redux/selectors";
-import { getCustomersThunk } from "../../redux/Thunks/CustomersThunk";
-import CustomersList from "../../modules/CustomersList/CustomersList";
+import { useSelector } from "react-redux";
+import { selectIsAuth } from "../../redux/selectors";
 
+// import RecentCustomersList from "../../modules/RecentCustomersList/RecentCustomersList";
+import { useMediaQuery } from "@mui/material";
+import { Box } from "@mui/system";
+import StatCardList from "../../modules/StatCardList/StatCardList";
 
-function DashboardPage() {
-  const dispatch = useDispatch();
+const DashboardPage = () => {
   const isAuth = useSelector(selectIsAuth);
-  const customers = useSelector(selectCustomers);
-  const isLoading = useSelector(selectIsLoading);
-
-  useEffect(() => {
-    if (!isAuth) return;
-    dispatch(getCustomersThunk());
-  }, [
-    dispatch,
-    // token,
-    isAuth,
-  ]);
-
+  const isNonMediumScreens = useMediaQuery("(min-width: 1440px)");
 
   return (
     isAuth && (
-    <>
-      {/* <SideBar /> */}
-      
-      {/* <WrapperCustomersStyled> */}
+      <>
+        <Box
+          mt="20px"
+          display="grid"
+          gridTemplateColumns="repeat(10, 1fr)"
+          gridAutoRows="160px"
+          gap="20px"
+          sx={{
+            "& > div": {
+              gridColumn: isNonMediumScreens ? undefined : "span 12",
+            },
+          }}
+        >
+          <StatCardList />
 
-
-        
-        {/* {customers?.length > 0 &&  */}
-        <CustomersList customers={customers} isLoading={isLoading} />
-         {/* } */}
-
-        {/* <ButtonAddTransactions /> */}
-
-
-      {/* </WrapperCustomersStyled> */}
-    </>
-  )
+          {/* <RecentCustomersList /> */}
+        </Box>
+        {/* <RecentCustomersList /> */}
+      </>
+    )
   );
-}
+};
 export default DashboardPage;
