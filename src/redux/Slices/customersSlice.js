@@ -15,6 +15,7 @@ const customersSlice = createSlice({
       .addCase(getCustomersThunk.fulfilled, (state, { payload }) => {
         state.customers = payload.customers;
         state.recentCustomers = payload.recentCustomers;
+        state.total = payload.total;
       })
 
       .addCase(addCustomerThunk.fulfilled, (state, { payload }) => {

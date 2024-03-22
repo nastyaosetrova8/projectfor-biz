@@ -8,7 +8,7 @@ import {
   selectIsAuth,
   selectIsLoading,
   selectProducts,
-  selectTotal,
+  selectTotalProducts,
 } from "../../redux/selectors";
 import { getProductsThunk } from "../../redux/Thunks/ProductsThunk";
 
@@ -25,8 +25,9 @@ const ProductsList = () => {
   const [searchInput, setSearchInput] = useState("");
 
   const products = useSelector(selectProducts);
-  // console.log(products)
-  const total = useSelector(selectTotal);
+  // console.log(products);
+  const totalProducts = useSelector(selectTotalProducts);
+  // console.log(totalProducts);
 
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
@@ -122,7 +123,7 @@ const ProductsList = () => {
           getRowId={(row) => row._id}
           rows={products || []}
           columns={columns}
-          rowCount={(products && total) || 0}
+          rowCount={(products && totalProducts) || 0}
           // rowsPerPageOptions={[20, 50, 100]}
           pageSizeOptions={[5, 100]}
           pagination

@@ -12,6 +12,7 @@ export const selectShowFormRegister = (state) => state.user.showFormRegister;
 
 export const selectCustomers = (state) => state.customers.customers;
 export const selectRecentCustomers = (state) => state.customers.recentCustomers;
+export const selectTotalCustomers = (state) => state.customers.total;
 
 export const selectProducts = (state) => state.products.products;
-export const selectTotal = (state) => state.products.total;
+export const selectTotalProducts = (state) => state.products.total;

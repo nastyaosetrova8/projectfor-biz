@@ -1,12 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addProduct, deleteProduct, getProducts, updateProduct } from "../../services/productsApi";
+import {
+  addProduct,
+  deleteProduct,
+  getProducts,
+  updateProduct,
+} from "../../services/productsApi";
 import { currentUserThunk } from "./userThunk";
 
 export const getProductsThunk = createAsyncThunk(
   "products/getProducts",
-  async ({page, pageSize, sort, search}) => {
+  async ({ page, pageSize, sort, search }) => {
     // try {
-    const data = await getProducts({page, pageSize, sort, search});
+    const data = await getProducts({ page, pageSize, sort, search });
     // console.log(data)
     return data;
     // } catch (error) {
@@ -51,4 +56,3 @@ export const deleteProductThunk = createAsyncThunk(
     return data;
   }
 );
-

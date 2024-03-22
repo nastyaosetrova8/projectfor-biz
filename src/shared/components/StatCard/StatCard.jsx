@@ -1,23 +1,26 @@
 import PropTypes from "prop-types";
-import { Box, Typography } from "@mui/material";
-import FlexBetween from "../../FlexBetween/FlexBetween";
+import { Typography } from "@mui/material";
+import { BoxStyled, CardTitleStyled } from "./StatCardStyled";
 
 const StatCard = ({ title, value, icon }) => {
   return (
-    <Box
-      gridColumn="span 2"
-      gridRow="span 1"
-      display="flex"
-      flexDirection="column"
-      justifyContent="space-between"
-      p="1.25rem 1rem"
-      flex="1 1 100%"
+    <BoxStyled
+      // gridColumn="span 2"
+      // gridRow="span 1"
+      // display="flex"
+      // flexDirection="column"
+      // justifyContent="space-between"
+      // p="1rem 1rem"
+      // flex="1 1 100%"
       //   backgroundColor={}
-      borderRadius="0.55rem"
+      // borderRadius="0.55rem"
+      sx={{}}
     >
-      <FlexBetween>
+      <CardTitleStyled>
+        {icon}
         <Typography
           variant="h6"
+          // mr={6}
           sx={
             {
               //   color:
@@ -26,8 +29,7 @@ const StatCard = ({ title, value, icon }) => {
         >
           {title}
         </Typography>
-        {icon}
-      </FlexBetween>
+      </CardTitleStyled>
 
       <Typography
         variant="h3"
@@ -40,7 +42,7 @@ const StatCard = ({ title, value, icon }) => {
       >
         {value}
       </Typography>
-    </Box>
+    </BoxStyled>
   );
 };
 

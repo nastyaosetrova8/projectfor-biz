@@ -1,15 +1,16 @@
 import { instance } from "./api";
 
-
 // export const getProducts = async () => {
 //   const { data } = await instance.get("/products");
 //   return data;
 // };
 
-export const getProducts = async ({page, pageSize, sort, search}) => {
-  const { data } = await instance.get(`/products?page=${page}&pageSize=${pageSize}&sort=${sort}&search=${search}`)
+export const getProducts = async ({ page, pageSize, sort, search }) => {
+  const { data } = await instance.get(
+    `/products?page=${page}&pageSize=${pageSize}&sort=${sort}&search=${search}`
+  );
   // ("/products", params: {page, pageSize, sort, search});
-  console.log(data);
+  // console.log(data);
   return data;
 };
 
@@ -26,10 +27,7 @@ export const deleteProduct = async (idProduct) => {
 
 export const updateProduct = async ({ productData, id }) => {
   const productId = id;
-  const { data } = await instance.patch(
-    `/products/${productId}`,
-    productData
-  );
+  const { data } = await instance.patch(`/products/${productId}`, productData);
   // console.log(data);
   return data;
 };
