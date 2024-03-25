@@ -25,10 +25,11 @@ export const deleteProduct = async (idProduct) => {
   return data;
 };
 
-export const updateProduct = async ({ productData, id }) => {
-  const productId = id;
-  const { data } = await instance.patch(`/products/${productId}`, productData);
-  // console.log(data);
+export const updateProduct = async ({ productData, _id }) => {
+  // const productId = id;
+  console.log("productId: ", _id);
+  const { data } = await instance.patch(`/products/${_id}`, productData);
+  console.log(data);
   return data;
 };
 

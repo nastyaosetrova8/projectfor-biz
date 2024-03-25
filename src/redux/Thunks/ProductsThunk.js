@@ -38,8 +38,8 @@ export const editProductThunk = createAsyncThunk(
   async (dataEdit, thunkAPI) => {
     try {
       const newProduct = await updateProduct(dataEdit);
-      thunkAPI.dispatch(getProductsThunk());
-      thunkAPI.dispatch(currentUserThunk());
+      // thunkAPI.dispatch(getProductsThunk());
+      // thunkAPI.dispatch(currentUserThunk());
       return newProduct;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

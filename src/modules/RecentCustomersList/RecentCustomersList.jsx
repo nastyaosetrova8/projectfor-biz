@@ -62,17 +62,16 @@ const RecentCustomersList = ({ isLoading, recentCustomers }) => {
         <Typography
           variant="h4"
           fontWeight="600"
-          sx={
-            {
-              //   color:
-            }
-          }
+          sx={{
+            //   color:
+            fontFamily: "inherit",
+          }}
         >
           Recent customers
         </Typography>
       </BoxStyled>
 
-      <Box m="0  2.5rem 1.5rem">
+      <Box m="0 2.5rem 1.5rem">
         {/* <Header title="CUSTOMERS" subtitle="List of Customers" /> */}
         <Box
           // mt="40px"
@@ -99,21 +98,15 @@ const RecentCustomersList = ({ isLoading, recentCustomers }) => {
 
             // "& .MuiDataGrid-cell-textLeft": {
             // "& .MuiDataGrid-withBorderColor": {
-            // "& .MuiDataGrid-cell": {
-            //   "&:not(:last-child)": {
-            //     borderRight: "1px solid #B0B4B4",
-            //   },
-            //   // "&:last-child": {
-            //   //   border: "1px solid transparent",
-            //   // },
-            // },
-
-            "& .MuiDataGrid-withBorderColor": {
-              // "&:not(:last-child)": {
-              // borderColor: "#B0B4B4",
-              // },
+            "& .MuiDataGrid-cell": {
+              "&:not(:last-child)": {
+                borderRight: "1px solid #B0B4B4",
+              },
+              //   // "&:last-child": {
+              //   //   border: "1px solid transparent",
+              //   // },
             },
-
+            //
             "& .MuiDataGrid-columnHeader": {
               "&:not(:last-child)": {
                 borderRight: "1px solid #B0B4B4",
@@ -141,6 +134,7 @@ const RecentCustomersList = ({ isLoading, recentCustomers }) => {
             },
             "& .MuiDataGrid-columnHeaderTitle": {
               color: "#768173",
+              fontFamily: "inherit",
               fontWeight: "600",
             },
             "& .css-yrdy0g-MuiDataGrid-columnHeaderRow": {},
@@ -183,6 +177,7 @@ const RecentCustomersList = ({ isLoading, recentCustomers }) => {
               borderTopRightRadius: "0",
               borderColor: "#23fcee",
               color: "",
+              fontFamily: "inherit",
               fontSize: "16px",
               // mt: "0",
               // "& .css-yrdy0g-MuiDataGrid-columnHeaderRow": {

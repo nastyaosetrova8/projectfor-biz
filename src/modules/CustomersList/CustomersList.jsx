@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Box } from "@mui/material";
+import { Avatar, Box } from "@mui/material";
 // import Header from "components/Header";
 import { DataGrid } from "@mui/x-data-grid";
 
@@ -12,7 +12,13 @@ const CustomersList = ({ customers, isLoading }) => {
     {
       field: "name",
       headerName: "Name",
-      flex: 0.5,
+      flex: 0.6,
+      renderCell: (params) => (
+        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+          <Avatar src={params.row.image} alt="Avatar" />
+          <p>{params.row.name}</p>
+        </div>
+      ),
     },
     // {
     //   field: "image",
@@ -22,12 +28,12 @@ const CustomersList = ({ customers, isLoading }) => {
     {
       field: "email",
       headerName: "Email",
-      flex: 0.5,
+      flex: 0.6,
     },
     {
       field: "spent",
       headerName: "Spent",
-      flex: 0.5,
+      flex: 0.6,
     },
     // {
     //   field: "phoneNumber",
@@ -40,7 +46,7 @@ const CustomersList = ({ customers, isLoading }) => {
     {
       field: "country",
       headerName: "Country",
-      flex: 0.4,
+      flex: 0.5,
     },
     // {
     //   field: "occupation",

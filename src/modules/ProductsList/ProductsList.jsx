@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import DataGridCustomToolbar from "../../shared/components/DataGridCustomToolbar/DataGridCustomToolbar";
 import { useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import {
   selectTotalProducts,
 } from "../../redux/selectors";
 import { getProductsThunk } from "../../redux/Thunks/ProductsThunk";
+import { saveId, toggleShowModal } from "../../redux/Slices/modalSlice";
 
 const ProductsList = () => {
   const dispatch = useDispatch();
@@ -21,13 +22,10 @@ const ProductsList = () => {
   const [pageSize, setPageSize] = useState(5);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
-
   const [searchInput, setSearchInput] = useState("");
 
   const products = useSelector(selectProducts);
-  // console.log(products);
   const totalProducts = useSelector(selectTotalProducts);
-  // console.log(totalProducts);
 
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
@@ -53,11 +51,20 @@ const ProductsList = () => {
     );
   }, [dispatch, isAuth, page, pageSize, search, sort]);
 
+  const handleEdit = (row) => {
+    dispatch(saveId(row._id));
+    dispatch(toggleShowModal("editProduct"));
+  };
+
+  const handleDelete = () => {
+    dispatch();
+  };
+
   const columns = [
     {
       field: "name",
       headerName: "Product info",
-      flex: 0.8,
+      flex: 0.6,
     },
     {
       field: "category",
@@ -67,7 +74,7 @@ const ProductsList = () => {
     {
       field: "stock",
       headerName: "Stock",
-      flex: 0.5,
+      flex: 0.4,
     },
     {
       field: "suppliers",
@@ -82,6 +89,34 @@ const ProductsList = () => {
       flex: 0.5,
       // renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
     },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      renderCell: (params) => (
+        <div>
+          <Button
+            variant="outlined"
+            color="primary"
+            // type="button"
+            // name="editProduct"
+            // id={params.row._id}
+            onClick={() => handleEdit(params.row)}
+          >
+            Edit
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => handleDelete(params.row.id)}
+          >
+            Delete
+          </Button>
+        </div>
+      ),
+      flex: 0.6,
+      // renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
+    },
   ];
 
   return (
@@ -91,30 +126,81 @@ const ProductsList = () => {
     >
       {/* <Header title="PRODACTS" subtitle="Entire list of transactions" /> */}
       <Box
-        height="60vh"
+        // height="60vh"
+        height="100%"
         sx={{
           "& .MuiDataGrid-root": {
+            // paddingLeft: "8px",
+            // paddingRight: "8px",
             // border: "none",
           },
           "& .MuiDataGrid-cell": {
             // borderBottom: "none",
+            "&:not(:last-child)": {
+              borderRight: "1px solid #B0B4B4",
+            },
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: "#5BFF33",
-            color: "#768173",
+            // backgroundColor: "#5BFF33",
+            backgroundColor: "#41ddd3",
             borderBottom: "none",
+            borderRadius: "0",
           },
-          "& .css-yrdy0g-MuiDataGrid-columnHeaderRow": {},
+          "& .MuiDataGrid-columnHeaderTitle": {
+            color: "#768173",
+            fontFamily: "Inter",
+            fontSize: "16px",
+            fontWeight: "600",
+          },
+
+          "& .MuiDataGrid-columnHeader": {
+            "&:not(:last-child)": {
+              borderRight: "1px solid #B0B4B4",
+            },
+          },
+          "& .MuiDataGrid-iconSeparator": {
+            display: "none",
+          },
           "& .MuiDataGrid-virtualScroller": {
             // backgroundColor: ,
           },
           "& .MuiDataGrid-footerContainer": {
             // backgroundColor: ,
             // color: ,
-            borderTop: "none",
+            // borderTop: "none",
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             // color: !important`,
+            color: "#38BDB5",
+            fontFamily: "Inter",
+            fontSize: "14px",
+            fontWeight: "600",
+          },
+          "& .MuiTablePagination-selectLabel": {
+            fontFamily: "Inter",
+            fontSize: "14px",
+          },
+          "& .MuiSelect-select.MuiTablePagination-select.MuiSelect-standard.MuiInputBase-input":
+            {
+              fontFamily: "Inter",
+              fontSize: "14px",
+              height: "30px",
+              display: "flex",
+              alignItems: "center",
+            },
+          "& .MuiSelect-nativeInput": {
+            // height: "48px",
+            display: "flex",
+            alignItems: "center",
+          },
+          "& .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiSelect-icon.MuiTablePagination-selectIcon.MuiSelect-iconStandard":
+            {
+              height: "24px",
+              width: "24px",
+            },
+          "& .MuiTablePagination-displayedRows": {
+            fontFamily: "Inter",
+            fontSize: "14px",
           },
         }}
       >
@@ -141,6 +227,10 @@ const ProductsList = () => {
           slots={{ toolbar: DataGridCustomToolbar }}
           slotProps={{
             toolbar: { searchInput, setSearchInput, setSearch },
+          }}
+          sx={{
+            fontFamily: "inherit",
+            fontSize: "16px",
           }}
         />
       </Box>

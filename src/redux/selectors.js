@@ -16,3 +16,8 @@ export const selectTotalCustomers = (state) => state.customers.total;
 
 export const selectProducts = (state) => state.products.products;
 export const selectTotalProducts = (state) => state.products.total;
+
+export const selectIsShowModal = (state) => state.modal.isShowModal;
+export const selectModalName = (state) => state.modal.modalName;
+
+export const selectSavedId = (state) => state.modal.savedId;

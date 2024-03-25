@@ -34,6 +34,12 @@ export const initialProductsState = {
   // categories: [],
 };
 
+export const initialModalState = {
+  isShowModal: false,
+  modalName: "",
+  savedId: null,
+};
+
 // export const initialSummaryState = {
 //   categoriesSummary: [
 //     {

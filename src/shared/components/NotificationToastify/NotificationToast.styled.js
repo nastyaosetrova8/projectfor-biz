@@ -5,19 +5,19 @@ export const ToastContainerStyled = styled(ToastContainer)`
   width: 400px;
 
   .Toastify__toast-container {
-    background: var(--light-green-color);
+    background: green;
   }
 
   .Toastify__toast--success {
-    background: var(--light-green-color);
+    background: green;
   }
 
   .Toastify__toast--error {
-    background: var(--light-green-color);
+    background: green;
   }
 
   .Toastify__toast--info {
-    background: var(--light-green-color);
+    background: green;
   }
 
   .Toastify__toast-body {
@@ -25,7 +25,7 @@ export const ToastContainerStyled = styled(ToastContainer)`
     height: 80px;
     font-size: 22px;
     text-align: center;
-    color: var(--main-text-color);
+    color: black;
   }
 
   @media screen and (max-width: 768px) {

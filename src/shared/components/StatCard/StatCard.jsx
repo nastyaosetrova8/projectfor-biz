@@ -21,11 +21,12 @@ const StatCard = ({ title, value, icon }) => {
         <Typography
           variant="h6"
           // mr={6}
-          sx={
-            {
-              //   color:
-            }
-          }
+          sx={{
+            //   color:
+            fontFamily: "inherit",
+            fontSize: "18px",
+            fontWeight: "600",
+          }}
         >
           {title}
         </Typography>

@@ -40,6 +40,7 @@ const StatCardList = ({ totalProducts, totalCustomers }) => {
         flexWrap: "wrap",
         // flexDirection: isNonDesktop ? "column" : "row",
         gap: "16px",
+        margin: "0 2.5rem 1.5rem",
       }}
       display="flex"
     >
@@ -70,6 +71,7 @@ const StatCardList = ({ totalProducts, totalCustomers }) => {
       <StatCard
         title="All Suppliers"
         // value={data && data.totalSuppliers}
+        value={0}
         icon={
           <PersonAdd
           // sx={{ color:, fontSize: "26px" }}
