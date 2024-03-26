@@ -11,7 +11,6 @@ export const getProductsThunk = createAsyncThunk(
   async ({ page, pageSize, sort, search }) => {
     // try {
     const data = await getProducts({ page, pageSize, sort, search });
-    // console.log(data)
     return data;
     // } catch (error) {
     //   return thunkAPI.rejectWithValue(error.message);
@@ -37,8 +36,6 @@ export const editProductThunk = createAsyncThunk(
   async (dataEdit, thunkAPI) => {
     try {
       const newProduct = await updateProduct(dataEdit);
-      // thunkAPI.dispatch(getProductsThunk());
-      // thunkAPI.dispatch(currentUserThunk());
       return newProduct;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -51,8 +48,6 @@ export const deleteProductThunk = createAsyncThunk(
   async (idProduct, thunkAPI) => {
     try {
       const data = await deleteProduct(idProduct);
-      // thunkAPI.dispatch(getProductsThunk());
-      // thunkAPI.dispatch(currentUserThunk());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
