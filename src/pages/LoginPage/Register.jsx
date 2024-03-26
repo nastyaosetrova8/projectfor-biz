@@ -1,11 +1,11 @@
-import RegisterForm from '../../modules/AuthForms/RegisterForm'
+import RegisterForm from "../../modules/AuthForms/RegisterForm";
 
 const Register = () => {
   return (
     <div>
-      <RegisterForm/>
+      <RegisterForm />
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

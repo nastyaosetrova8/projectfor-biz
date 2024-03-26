@@ -1,12 +1,11 @@
-import LoginForm from "../../modules/AuthForms/LoginForm"
-
+import LoginForm from "../../modules/AuthForms/LoginForm";
 
 const LoginPage = () => {
   return (
     <div>
       <LoginForm />
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
