@@ -83,7 +83,7 @@ const EditProductForm = () => {
   const handleClickBtnClose = () => {
     document.body.classList.remove("no-scroll");
     dispatch(toggleShowModal(""));
-    dispatch(saveId("null"));
+    dispatch(saveId(null));
   };
 
   return (

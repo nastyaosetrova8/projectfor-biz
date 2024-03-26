@@ -9,7 +9,7 @@ export const notifyAddSuccess = () => toast.success("Added successfully!");
 
 export const notifyEditSuccess = () => toast.success("Edited successfully!");
 
-export const notifyDeleteSuccess = () => toast.success("Added successfully!");
+export const notifyDeleteSuccess = () => toast.success("Deleted successfully!");
 
 export const notifyError = (error) => toast.error(`${error.message}`);
 

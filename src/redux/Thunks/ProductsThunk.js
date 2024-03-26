@@ -5,7 +5,6 @@ import {
   getProducts,
   updateProduct,
 } from "../../services/productsApi";
-import { currentUserThunk } from "./userThunk";
 
 export const getProductsThunk = createAsyncThunk(
   "products/getProducts",
@@ -50,9 +49,13 @@ export const editProductThunk = createAsyncThunk(
 export const deleteProductThunk = createAsyncThunk(
   "products/deleteProduct",
   async (idProduct, thunkAPI) => {
-    const data = await deleteProduct(idProduct);
-    thunkAPI.dispatch(getProductsThunk());
-    thunkAPI.dispatch(currentUserThunk());
-    return data;
+    try {
+      const data = await deleteProduct(idProduct);
+      // thunkAPI.dispatch(getProductsThunk());
+      // thunkAPI.dispatch(currentUserThunk());
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );

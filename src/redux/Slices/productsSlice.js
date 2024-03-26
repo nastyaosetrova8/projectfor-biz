@@ -21,10 +21,6 @@ const productsSlice = createSlice({
       })
 
       .addCase(editProductThunk.fulfilled, (state, { payload }) => {
-        // const index =
-        // state.products.findIndex((item) => item._id === payload);
-        // state.products.splice(index, 1);
-
         const index = state.products.findIndex(
           (item) => item._id === payload._id
         );

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsShowModal, selectModalName } from "../../../redux/selectors";
 import { toggleShowModal } from "../../../redux/Slices/modalSlice";
 import EditProductForm from "../../../modules/ModalForms/ProductForms/EditProductForm";
+import DeleteForm from "../../../modules/ModalForms/DeleteForm";
 
 const modalRoot = document.querySelector("#modal-root");
 
@@ -40,6 +41,8 @@ const Modal = () => {
     <StyledOverlay onClick={handleClickOverlay}>
       {/* {modalName === "addProduct" && isShowModal && <AddProductForm />} */}
       {modalName === "editProduct" && isShowModal && <EditProductForm />}
+      {modalName === "delete" && isShowModal && <DeleteForm />}
+
       {/* {modalName === "addSuppliers" && isShowModal && <AddSuppliersForm />}
       {modalName === "editSuppliers" && isShowModal && <EditSuppliersForm />} */}
     </StyledOverlay>,

@@ -19,17 +19,15 @@ export const addProduct = async (product) => {
   return data;
 };
 
-export const deleteProduct = async (idProduct) => {
-  // console.log('idProduct: ', idProduct);
-  const { data } = await instance.delete(`/products/${idProduct}`);
+export const updateProduct = async ({ productData, _id }) => {
+  // const productId = id;
+  const { data } = await instance.patch(`/products/${_id}`, productData);
   return data;
 };
 
-export const updateProduct = async ({ productData, _id }) => {
-  // const productId = id;
-  console.log("productId: ", _id);
-  const { data } = await instance.patch(`/products/${_id}`, productData);
-  console.log(data);
+export const deleteProduct = async (idProduct) => {
+  // console.log('idProduct: ', idProduct);
+  const { data } = await instance.delete(`/products/${idProduct}`);
   return data;
 };
 

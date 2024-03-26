@@ -56,8 +56,9 @@ const ProductsList = () => {
     dispatch(toggleShowModal("editProduct"));
   };
 
-  const handleDelete = () => {
-    dispatch();
+  const handleDelete = (row) => {
+    dispatch(saveId(row._id));
+    dispatch(toggleShowModal("delete"));
   };
 
   const columns = [
@@ -108,7 +109,7 @@ const ProductsList = () => {
           <Button
             variant="outlined"
             color="secondary"
-            onClick={() => handleDelete(params.row.id)}
+            onClick={() => handleDelete(params.row)}
           >
             Delete
           </Button>
