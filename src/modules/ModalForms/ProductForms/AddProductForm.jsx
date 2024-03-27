@@ -24,9 +24,19 @@ import {
   notifyError,
 } from "../../../shared/components/NotificationToastify/Toasts";
 import { toggleShowModal } from "../../../redux/Slices/modalSlice";
+import {
+  addProductThunk,
+  getProductsThunk,
+} from "../../../redux/Thunks/ProductsThunk";
+import { useState } from "react";
 
 const AddProductForm = () => {
   const dispatch = useDispatch();
+
+  const [page] = useState(0);
+  const [pageSize] = useState(5);
+  const [sort] = useState({});
+  const [search] = useState("");
 
   const formik = useFormik({
     initialValues: {
@@ -39,25 +49,50 @@ const AddProductForm = () => {
 
     validationSchema: Yup.object({
       name: Yup.string()
-        .email("Invalid email address")
-        .required("Email address is required"),
-      stock: Yup.string()
-        .min(6, "Enter at least 6 characters")
-        .max(20, "Must be maximum 20 characters")
-        .required("Password is required"),
+        .min(3)
+        .max(30, "Must be 30 characters or less")
+        .required("Required"),
+      stock: Yup.number("Enter sum")
+        .positive("Invalid number")
+        .required("Required"),
+      price: Yup.number("Enter sum")
+        .positive("Invalid number")
+        .required("Required"),
+      category: Yup.string()
+        .min(3)
+        .max(20, "Must be 20 characters or less")
+        .required("Required"),
+      suppliers: Yup.string()
+        .min(3)
+        .max(20, "Must be 20 characters or less")
+        .required("Required"),
     }),
 
     onSubmit: (values) => {
-      //   dispatch(loginUserThunk(values))
-      console
-        .log(values)
-        // .unwrap()
-        .then((data) => {
-          notifyAddSuccess(data);
+      const dataAdded = {
+        // productData: {
+        ...values,
+        stock: String(values.stock),
+        price: String(values.price),
+        // },
+      };
+      dispatch(addProductThunk(dataAdded))
+        .unwrap()
+        .then((dataAdded) => {
+          dispatch(
+            getProductsThunk({
+              page: page,
+              pageSize: pageSize,
+              sort: JSON.stringify(sort),
+              search,
+            })
+          );
+
+          notifyAddSuccess(dataAdded);
+          dispatch(toggleShowModal());
         })
         .catch((error) => {
           notifyError(error);
-          //       navigate("/");
         });
     },
   });

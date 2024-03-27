@@ -27,7 +27,6 @@ const EditProductForm = () => {
   const products = useSelector(selectProducts);
   const productId = useSelector(selectSavedId);
   const currentProduct = products.find((item) => productId === item._id);
-  console.log(currentProduct);
 
   const formik = useFormik({
     initialValues: {
