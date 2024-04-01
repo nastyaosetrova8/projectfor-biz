@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 // import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import {
@@ -29,14 +29,24 @@ import {
   getProductsThunk,
 } from "../../../redux/Thunks/ProductsThunk";
 import { useState } from "react";
+import { selectProducts } from "../../../redux/selectors";
+import { MenuItem, Select } from "@mui/material";
 
 const AddProductForm = () => {
   const dispatch = useDispatch();
+  const products = useSelector(selectProducts);
+  const uniqueCategories = [
+    ...new Set(products.map((product) => product.category)),
+  ];
 
   const [page] = useState(0);
   const [pageSize] = useState(5);
   const [sort] = useState({});
   const [search] = useState("");
+
+  // useEffect(() => {
+  //   dispatch(getProductsThunk());
+  // }, [dispatch]);
 
   const formik = useFormik({
     initialValues: {
@@ -157,14 +167,40 @@ const AddProductForm = () => {
             {/* ------------------- */}
 
             <InputPasswWrapStyled>
-              <InputS
+              {/* <InputS
                 name="category"
                 type="text"
                 value={formik.values.category}
                 placeholder="Category"
                 onChange={formik.handleChange}
                 label="Category"
-              />
+              /> */}
+              <Select
+                labelId="Category"
+                id="demo-simple-select-helper"
+                value={formik.values.category}
+                name="category"
+                // label="Category"
+                onChange={formik.handleChange}
+                displayEmpty
+                renderValue={(value) => {
+                  if (value.length === 0) {
+                    return <em>Categories</em>;
+                  }
+
+                  return value;
+                }}
+                // MenuProps={MenuProps}
+                inputProps={{ "aria-label": "Without label" }}
+
+                // options={options}
+              >
+                {uniqueCategories.map((category) => (
+                  <MenuItem key={category} value={category}>
+                    {category}
+                  </MenuItem>
+                ))}
+              </Select>
             </InputPasswWrapStyled>
 
             {formik.touched.category && formik.errors.category ? (

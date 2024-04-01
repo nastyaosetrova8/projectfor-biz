@@ -6,7 +6,7 @@ import { DataGrid } from "@mui/x-data-grid";
 const CustomersList = ({ customers, isLoading }) => {
   // const theme = useTheme();
   // const { data } = useSelector(selectCustomers);
-  console.log(customers);
+  // console.log(customers);
 
   const columns = [
     {

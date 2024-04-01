@@ -37,15 +37,12 @@ const SharedLayout = () => {
   // const { data } = useSelector(selectUserId);
 
   return (
-    <Box
-      // display={isNonMobile ? "flex" : "block"}
-      width="100%"
-      height="100%"
-    >
+    <Box display={isNonDesktop ? "block" : "flex"} width="100%" height="100%">
       <Sidebar
         user={user || {}}
         isNonDesktop={isNonDesktop}
         drawerWidth="84px"
+        drawerHeight="100vh"
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
       />

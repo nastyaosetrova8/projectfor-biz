@@ -21,12 +21,16 @@ import {
   notifyError,
 } from "../../../shared/components/NotificationToastify/Toasts";
 import { editProductThunk } from "../../../redux/Thunks/ProductsThunk";
+import { MenuItem, Select } from "@mui/material";
 
 const EditProductForm = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectProducts);
   const productId = useSelector(selectSavedId);
   const currentProduct = products.find((item) => productId === item._id);
+  const uniqueCategories = [
+    ...new Set(products.map((product) => product.category)),
+  ];
 
   const formik = useFormik({
     initialValues: {
@@ -140,14 +144,32 @@ const EditProductForm = () => {
             {/* ------------------- */}
 
             <InputPasswWrapStyled>
-              <InputS
-                name="category"
-                type="text"
+              <Select
+                labelId="Category"
+                id="demo-simple-select-helper"
                 value={formik.values.category}
-                autoComplete="off"
+                name="category"
+                // label="Category"
                 onChange={formik.handleChange}
-                label="Category"
-              />
+                displayEmpty
+                renderValue={(value) => {
+                  if (value.length === 0) {
+                    return <em>Categories</em>;
+                  }
+
+                  return value;
+                }}
+                // MenuProps={MenuProps}
+                inputProps={{ "aria-label": "Without label" }}
+
+                // options={options}
+              >
+                {uniqueCategories.map((category) => (
+                  <MenuItem key={category} value={category}>
+                    {category}
+                  </MenuItem>
+                ))}
+              </Select>
             </InputPasswWrapStyled>
 
             {formik.touched.category && formik.errors.category ? (

@@ -6,8 +6,8 @@ import {
   IconButton,
   List,
   ListItem,
-  ListItemButton,
-  ListItemIcon,
+  // ListItemButton,
+  // ListItemIcon,
 } from "@mui/material";
 import {
   HomeOutlined,
@@ -17,6 +17,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { ButtonStyled } from "./SidebarStyled";
 
 const navItems = [
   {
@@ -29,7 +30,7 @@ const navItems = [
   },
   {
     title: "Products",
-    icon: <ShoppingCartOutlined />,
+    icon: <ShoppingCartOutlined size={"20px"} />,
   },
   // {
   //   title: "Suppliers",
@@ -40,6 +41,7 @@ const navItems = [
 const Sidebar = ({
   //   user,
   drawerWidth,
+  drawerHeight,
   isSidebarOpen,
   setIsSidebarOpen,
   isNonDesktop,
@@ -60,7 +62,18 @@ const Sidebar = ({
   }, [isNonDesktop, pathname, setIsSidebarOpen]);
 
   return (
-    <Box component="nav">
+    <Box
+      component="nav"
+      position={isNonDesktop ? "fixed" : "relative"}
+      zIndex={isNonDesktop ? "1200" : "0"}
+
+      // sx={{
+      //   "& .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation0.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft.css-12i7wg6-MuiPaper-root-MuiDrawer-paper":
+      //     {
+      //       zIndex: "0",
+      //     },
+      // }}
+    >
       {isSidebarOpen && (
         <Drawer
           open={isSidebarOpen}
@@ -69,8 +82,8 @@ const Sidebar = ({
           anchor="left"
           sx={{
             width: drawerWidth,
+            height: drawerHeight,
             "& .MuiDrawer-paper": {
-              color: "black",
               backgroundColor: "#41ddd3",
               boxSixing: "border-box",
               border: "1px solid #23fcee",
@@ -97,7 +110,14 @@ const Sidebar = ({
               )}
               {/* </FlexBetween> */}
             </Box>
-            <List>
+            <List
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "14px",
+              }}
+            >
               {navItems.map(({ icon, title }) => {
                 const lcTitle = title.toLowerCase();
 
@@ -105,9 +125,15 @@ const Sidebar = ({
                   <ListItem
                     key={title}
                     sx={{
+                      margin: "0",
+                      padding: "0",
+                      maxWidth: "44px",
+                      width: "100%",
+                      height: "44px",
+                      borderRadius: "100%",
                       "& .MuiListItemIcon-root": {
-                        margin: "0",
-                        padding: "0",
+                        // margin: "0",
+                        // padding: "0",
                       },
                       // "& .MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.css-12cf8da-MuiListItem-root":
                       //   {
@@ -116,43 +142,56 @@ const Sidebar = ({
                     }}
                     // disablePadding
                   >
-                    <ListItemButton
+                    {/* <ListItemButton */}
+                    <ButtonStyled
+                      style={{
+                        backgroundColor:
+                          active === lcTitle ? "#41ddd3" : "#ffffff",
+                        // color: active === lcTitle ? "#41ddd3" : "#797a7a",
+                        color: "#797a7a",
+                      }}
                       onClick={() => {
                         navigate(`/${lcTitle}`);
-                        setActive(lcTitle);
+                        // setActive(lcTitle);
                       }}
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        padding: "0",
-                        maxWidth: "44px",
-                        width: "100%",
-                        height: "44px",
-                        borderRadius: "100%",
-                        border: "1px solid #23fcee",
-                        boxShadow: "0-1px 7px 0px rgba(238, 231, 231, 0.05)",
-                        backgroundColor: "#ffffff",
-                        // color: active === lcTitle ? "red" : "green",
-                      }}
+                      // sx={{
+                      //   display: "flex",
+                      //   justifyContent: "center",
+                      //   alignItems: "center",
+                      //   padding: "0",
+                      //   // maxWidth: "44px",
+                      //   // width: "100%",
+                      //   // height: "44px",
+                      //   borderRadius: "100%",
+                      //   // height: "100%",
+                      //   border: "1px solid #23fcee",
+                      //   boxShadow: "0-1px 7px 0px rgba(238, 231, 231, 0.05)",
+                      //   backgroundColor: "#ffffff",
+
+                      //   " & :hover": {
+                      //     bgcolor: "red",
+                      //   },
+                      //   // color: active ? "red" : "green",
+                      // }}
                     >
-                      <ListItemIcon
-                        sx={{
+                      {/* <ListItemIcon */}
+                      {/* <IconWrapper */}
+                      {/* sx={{
                           // ml: "2rem",
-                          color: active === lcTitle ? "#ffffff" : "#797a7a",
+                          // color: active === lcTitle ? "#41ddd3" : "#797a7a",
                           minWidth: "20px",
                           height: " 20px",
-                        }}
-                      >
-                        {icon}
-                      </ListItemIcon>
+                        }} */}
+                      {/* > */}
+                      {icon}
+                      {/* </IconWrapper> */}
                       {/* <ListItemText primary={text} /> */}
                       {/* {active === lcTitle && (
                         <ChevronRightOutlined
                         sx={{ ml: "auto" }}
                         />
                       )} */}
-                    </ListItemButton>
+                    </ButtonStyled>
                   </ListItem>
                 );
               })}
@@ -203,6 +242,7 @@ const Sidebar = ({
 Sidebar.propTypes = {
   user: PropTypes.any,
   drawerWidth: PropTypes.any,
+  drawerHeight: PropTypes.any,
   isSidebarOpen: PropTypes.any,
   setIsSidebarOpen: PropTypes.any,
   isNonDesktop: PropTypes.any,
