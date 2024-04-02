@@ -59,6 +59,7 @@ const DashboardPage = () => {
       <>
         <Box
           mt="20px"
+          // height="100vh"
           // display="grid"
           // gridTemplateColumns="repeat(10, 1fr)"
           // gridAutoRows="160px"
@@ -68,9 +69,9 @@ const DashboardPage = () => {
           //     gridColumn: isNonMediumScreens ? undefined : "span 12",
           //   },
           // }}
-          sx={{
-            height: "100vh",
-          }}
+          // sx={{
+          //   height: "100%",
+          // }}
         >
           {/* <StatCard
             title="All Products"

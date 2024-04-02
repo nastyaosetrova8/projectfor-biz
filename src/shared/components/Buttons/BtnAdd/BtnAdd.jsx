@@ -4,7 +4,7 @@ import { PlusStyled, BtnStyled } from "./BtnAddStyled";
 const BtnAdd = ({ onClick }) => {
   return (
     <>
-      <BtnStyled type="button" name="addTrans" onClick={onClick}>
+      <BtnStyled type="button" onClick={onClick}>
         <PlusStyled />
       </BtnStyled>
     </>

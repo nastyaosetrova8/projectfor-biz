@@ -9,15 +9,10 @@ import {
   notifyError,
 } from "../../shared/components/NotificationToastify/Toasts";
 import { saveId, toggleShowModal } from "../../redux/Slices/modalSlice";
-import {
-  AiOutlineCloseS,
-  AuthTitle,
-  BtnCloseS,
-  BtnConfirmAuthS,
-  BtnToggleFormAuthS,
-  StyledModal,
-} from "./AllModalFormsStyled";
+import { BtnsWrapper, ModalTitle, StyledModal } from "./AllModalFormsStyled";
 import { useState } from "react";
+import BtnConfirm from "../../shared/components/Buttons/BtnConfirm/BtnConfirm";
+import BtnClose from "../../shared/components/Buttons/BtnClose/BtnClose";
 
 const DeleteForm = () => {
   const dispatch = useDispatch();
@@ -61,20 +56,23 @@ const DeleteForm = () => {
   return (
     <>
       <StyledModal>
-        <BtnCloseS onClick={handleClickBtnClose}>
-          <AiOutlineCloseS />
-        </BtnCloseS>
-        <AuthTitle>
+        <BtnClose onClick={handleClickBtnClose} />
+        <ModalTitle>
           Are you shure you want to remove the {currentProduct.name} product?
-        </AuthTitle>
+        </ModalTitle>
 
-        <BtnConfirmAuthS type="submit" onClick={handleDelete}>
-          Delete
-        </BtnConfirmAuthS>
-
-        <BtnToggleFormAuthS type="button" onClick={handleClickBtnClose}>
-          Cancel
-        </BtnToggleFormAuthS>
+        <BtnsWrapper>
+          <BtnConfirm type="submit" onClick={handleDelete}>
+            Delete
+          </BtnConfirm>
+          <BtnConfirm
+            variant="btn-cancel"
+            type="button"
+            onClick={handleClickBtnClose}
+          >
+            Cancel
+          </BtnConfirm>
+        </BtnsWrapper>
       </StyledModal>
     </>
   );

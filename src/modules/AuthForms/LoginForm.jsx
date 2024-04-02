@@ -16,10 +16,12 @@ import {
   StyledModal,
 } from "./LoginFormStyled";
 import InputDefault from "../../shared/components/InputDefault/InputDefault";
-import { notifyLoginSuccess, notifyRegisterError } from "../../shared/components/NotificationToastify/Toasts";
-import BtnConfirmAuth from "../../shared/components/Buttons/BtnConfirmAuth/BtnConfirmAuth";
-import BtnToggleFormAuth from "../../shared/components/Buttons/BtnToggleFormAuth/BtnToggleFormAuth";
-
+import {
+  notifyLoginSuccess,
+  notifyRegisterError,
+} from "../../shared/components/NotificationToastify/Toasts";
+import BtnConfirm from "../../shared/components/Buttons/BtnConfirm/BtnConfirm";
+import BtnToggleForm from "../../shared/components/Buttons/BtnToggleForm/BtnToggleForm";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -55,7 +57,6 @@ const LoginForm = () => {
         });
     },
   });
-
 
   return (
     <>
@@ -105,11 +106,11 @@ const LoginForm = () => {
               <ErrorsStyled>{formik.errors.password}</ErrorsStyled>
             ) : null}
           </InputsWrapper>
-          <BtnConfirmAuth type="submit">Enter</BtnConfirmAuth>
+          <BtnConfirm type="submit">Enter</BtnConfirm>
         </FormStyled>
 
         <Link to="/register">
-        <BtnToggleFormAuth type="button">Register</BtnToggleFormAuth>
+          <BtnToggleForm type="button">Register</BtnToggleForm>
         </Link>
       </StyledModal>
     </>

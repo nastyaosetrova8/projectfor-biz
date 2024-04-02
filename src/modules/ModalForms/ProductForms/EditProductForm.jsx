@@ -1,17 +1,16 @@
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
+import { MenuItem } from "@mui/material";
 import {
-  AiOutlineCloseS,
-  AuthTitle,
-  BtnCloseS,
-  BtnConfirmAuthS,
-  BtnToggleFormAuthS,
+  BtnsWrapper,
   ErrorsStyled,
   FormStyled,
-  InputPasswWrapStyled,
   InputS,
+  InputsGroupS,
   InputsWrapper,
+  ModalTitle,
+  SelectStyled,
   StyledModal,
 } from "../AllModalFormsStyled";
 import { saveId, toggleShowModal } from "../../../redux/Slices/modalSlice";
@@ -21,7 +20,8 @@ import {
   notifyError,
 } from "../../../shared/components/NotificationToastify/Toasts";
 import { editProductThunk } from "../../../redux/Thunks/ProductsThunk";
-import { MenuItem, Select } from "@mui/material";
+import BtnConfirm from "../../../shared/components/Buttons/BtnConfirm/BtnConfirm";
+import BtnClose from "../../../shared/components/Buttons/BtnClose/BtnClose";
 
 const EditProductForm = () => {
   const dispatch = useDispatch();
@@ -92,26 +92,23 @@ const EditProductForm = () => {
   return (
     <>
       <StyledModal>
-        <BtnCloseS onClick={handleClickBtnClose}>
-          <AiOutlineCloseS />
-        </BtnCloseS>
-        <AuthTitle>Edit product</AuthTitle>
+        <BtnClose onClick={handleClickBtnClose} />
+        <ModalTitle>Edit product</ModalTitle>
         <FormStyled onSubmit={formik.handleSubmit}>
           <InputsWrapper>
-            <InputS
-              name="name"
-              type="text"
-              value={formik.values.name}
-              autoComplete="off"
-              onChange={formik.handleChange}
-              label="Product info"
-            />
+            <InputsGroupS>
+              <InputS
+                name="name"
+                type="text"
+                value={formik.values.name}
+                autoComplete="off"
+                onChange={formik.handleChange}
+                label="Product info"
+              />
+              {formik.touched.name && formik.errors.name ? (
+                <ErrorsStyled>{formik.errors.name}</ErrorsStyled>
+              ) : null}
 
-            {formik.touched.name && formik.errors.name ? (
-              <ErrorsStyled>{formik.errors.name}</ErrorsStyled>
-            ) : null}
-
-            <InputPasswWrapStyled>
               <InputS
                 name="stock"
                 type="number"
@@ -120,13 +117,10 @@ const EditProductForm = () => {
                 onChange={formik.handleChange}
                 label="Stock"
               />
-            </InputPasswWrapStyled>
+              {formik.touched.stock && formik.errors.stock ? (
+                <ErrorsStyled>{formik.errors.stock}</ErrorsStyled>
+              ) : null}
 
-            {formik.touched.stock && formik.errors.stock ? (
-              <ErrorsStyled>{formik.errors.stock}</ErrorsStyled>
-            ) : null}
-
-            <InputPasswWrapStyled>
               <InputS
                 name="price"
                 type="number"
@@ -135,48 +129,40 @@ const EditProductForm = () => {
                 onChange={formik.handleChange}
                 label="Price"
               />
-            </InputPasswWrapStyled>
+              {formik.touched.price && formik.errors.price ? (
+                <ErrorsStyled>{formik.errors.price}</ErrorsStyled>
+              ) : null}
+            </InputsGroupS>
 
-            {formik.touched.price && formik.errors.price ? (
-              <ErrorsStyled>{formik.errors.price}</ErrorsStyled>
-            ) : null}
-
-            {/* ------------------- */}
-
-            <InputPasswWrapStyled>
-              <Select
+            <InputsGroupS>
+              <SelectStyled
                 labelId="Category"
-                id="demo-simple-select-helper"
+                // id="demo-simple-select-helper"
                 value={formik.values.category}
                 name="category"
-                // label="Category"
                 onChange={formik.handleChange}
                 displayEmpty
                 renderValue={(value) => {
                   if (value.length === 0) {
                     return <em>Categories</em>;
                   }
-
                   return value;
                 }}
-                // MenuProps={MenuProps}
                 inputProps={{ "aria-label": "Without label" }}
-
-                // options={options}
+                sx={{
+                  borderRadius: "30px",
+                }}
               >
                 {uniqueCategories.map((category) => (
                   <MenuItem key={category} value={category}>
                     {category}
                   </MenuItem>
                 ))}
-              </Select>
-            </InputPasswWrapStyled>
+              </SelectStyled>
+              {formik.touched.category && formik.errors.category ? (
+                <ErrorsStyled>{formik.errors.category}</ErrorsStyled>
+              ) : null}
 
-            {formik.touched.category && formik.errors.category ? (
-              <ErrorsStyled>{formik.errors.category}</ErrorsStyled>
-            ) : null}
-
-            <InputPasswWrapStyled>
               <InputS
                 name="suppliers"
                 type="text"
@@ -185,18 +171,22 @@ const EditProductForm = () => {
                 onChange={formik.handleChange}
                 label="Suppliers"
               />
-            </InputPasswWrapStyled>
-
-            {formik.touched.suppliers && formik.errors.suppliers ? (
-              <ErrorsStyled>{formik.errors.suppliers}</ErrorsStyled>
-            ) : null}
+              {formik.touched.suppliers && formik.errors.suppliers ? (
+                <ErrorsStyled>{formik.errors.suppliers}</ErrorsStyled>
+              ) : null}
+            </InputsGroupS>
           </InputsWrapper>
-          <BtnConfirmAuthS type="submit">Save</BtnConfirmAuthS>
+          <BtnsWrapper>
+            <BtnConfirm type="submit">Save</BtnConfirm>
+            <BtnConfirm
+              variant="btn-cancel"
+              type="button"
+              onClick={handleClickBtnClose}
+            >
+              Cancel
+            </BtnConfirm>
+          </BtnsWrapper>
         </FormStyled>
-
-        <BtnToggleFormAuthS type="button" onClick={handleClickBtnClose}>
-          Cancel
-        </BtnToggleFormAuthS>
       </StyledModal>
     </>
   );

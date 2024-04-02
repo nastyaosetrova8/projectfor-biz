@@ -1,22 +1,15 @@
 import { useFormik } from "formik";
-// import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import {
-  AuthTitle,
-  BtnCloseS,
-  BtnConfirmAuthS,
-  // BtnEyeStyled,
-  BtnToggleFormAuthS,
+  BtnsWrapper,
   ErrorsStyled,
   FormStyled,
-  InputPasswWrapStyled,
   InputS,
+  InputsGroupS,
   InputsWrapper,
-  // LuEyeOffStyled,
-  // LuEyeStyled,
-  // RestoreStyled,
+  ModalTitle,
+  SelectStyled,
   StyledModal,
 } from "../AllModalFormsStyled";
 import {
@@ -30,7 +23,9 @@ import {
 } from "../../../redux/Thunks/ProductsThunk";
 import { useState } from "react";
 import { selectProducts } from "../../../redux/selectors";
-import { MenuItem, Select } from "@mui/material";
+import { MenuItem } from "@mui/material";
+import BtnConfirm from "../../../shared/components/Buttons/BtnConfirm/BtnConfirm";
+import BtnClose from "../../../shared/components/Buttons/BtnClose/BtnClose";
 
 const AddProductForm = () => {
   const dispatch = useDispatch();
@@ -80,11 +75,9 @@ const AddProductForm = () => {
 
     onSubmit: (values) => {
       const dataAdded = {
-        // productData: {
         ...values,
         stock: String(values.stock),
         price: String(values.price),
-        // },
       };
       dispatch(addProductThunk(dataAdded))
         .unwrap()
@@ -116,25 +109,23 @@ const AddProductForm = () => {
   return (
     <>
       <StyledModal>
-        <BtnCloseS onClick={handleClickBtnClose} />
-        <AuthTitle>Add a new product</AuthTitle>
+        <BtnClose type="button" onClick={handleClickBtnClose} />
+        <ModalTitle>Add a new product</ModalTitle>
         <FormStyled onSubmit={formik.handleSubmit}>
           <InputsWrapper>
-            <InputS
-              name="name"
-              type="name"
-              value={formik.values.name}
-              placeholder="Product info"
-              // autoComplete="off"
-              onChange={formik.handleChange}
-              label="Product info"
-            />
+            <InputsGroupS>
+              <InputS
+                name="name"
+                type="name"
+                value={formik.values.name}
+                placeholder="Product info"
+                onChange={formik.handleChange}
+                label="Product info"
+              />
+              {formik.touched.name && formik.errors.name ? (
+                <ErrorsStyled>{formik.errors.name}</ErrorsStyled>
+              ) : null}
 
-            {formik.touched.name && formik.errors.name ? (
-              <ErrorsStyled>{formik.errors.name}</ErrorsStyled>
-            ) : null}
-
-            <InputPasswWrapStyled>
               <InputS
                 name="stock"
                 type="number"
@@ -143,13 +134,10 @@ const AddProductForm = () => {
                 onChange={formik.handleChange}
                 label="Stock"
               />
-            </InputPasswWrapStyled>
+              {formik.touched.stock && formik.errors.stock ? (
+                <ErrorsStyled>{formik.errors.stock}</ErrorsStyled>
+              ) : null}
 
-            {formik.touched.stock && formik.errors.stock ? (
-              <ErrorsStyled>{formik.errors.stock}</ErrorsStyled>
-            ) : null}
-
-            <InputPasswWrapStyled>
               <InputS
                 name="price"
                 type="number"
@@ -158,56 +146,40 @@ const AddProductForm = () => {
                 onChange={formik.handleChange}
                 label="Price"
               />
-            </InputPasswWrapStyled>
+              {formik.touched.price && formik.errors.price ? (
+                <ErrorsStyled>{formik.errors.price}</ErrorsStyled>
+              ) : null}
+            </InputsGroupS>
 
-            {formik.touched.price && formik.errors.price ? (
-              <ErrorsStyled>{formik.errors.price}</ErrorsStyled>
-            ) : null}
-
-            {/* ------------------- */}
-
-            <InputPasswWrapStyled>
-              {/* <InputS
-                name="category"
-                type="text"
-                value={formik.values.category}
-                placeholder="Category"
-                onChange={formik.handleChange}
-                label="Category"
-              /> */}
-              <Select
+            <InputsGroupS>
+              <SelectStyled
                 labelId="Category"
-                id="demo-simple-select-helper"
+                // id="demo-simple-select-helper"
                 value={formik.values.category}
                 name="category"
-                // label="Category"
                 onChange={formik.handleChange}
                 displayEmpty
                 renderValue={(value) => {
                   if (value.length === 0) {
-                    return <em>Categories</em>;
+                    return <p>Categories</p>;
                   }
-
                   return value;
                 }}
-                // MenuProps={MenuProps}
                 inputProps={{ "aria-label": "Without label" }}
-
-                // options={options}
+                sx={{
+                  borderRadius: "30px",
+                }}
               >
                 {uniqueCategories.map((category) => (
                   <MenuItem key={category} value={category}>
                     {category}
                   </MenuItem>
                 ))}
-              </Select>
-            </InputPasswWrapStyled>
+              </SelectStyled>
+              {formik.touched.category && formik.errors.category ? (
+                <ErrorsStyled>{formik.errors.category}</ErrorsStyled>
+              ) : null}
 
-            {formik.touched.category && formik.errors.category ? (
-              <ErrorsStyled>{formik.errors.category}</ErrorsStyled>
-            ) : null}
-
-            <InputPasswWrapStyled>
               <InputS
                 name="suppliers"
                 type="text"
@@ -216,18 +188,22 @@ const AddProductForm = () => {
                 onChange={formik.handleChange}
                 label="Suppliers"
               />
-            </InputPasswWrapStyled>
-
-            {formik.touched.suppliers && formik.errors.suppliers ? (
-              <ErrorsStyled>{formik.errors.suppliers}</ErrorsStyled>
-            ) : null}
+              {formik.touched.suppliers && formik.errors.suppliers ? (
+                <ErrorsStyled>{formik.errors.suppliers}</ErrorsStyled>
+              ) : null}
+            </InputsGroupS>
           </InputsWrapper>
-          <BtnConfirmAuthS type="submit">Add</BtnConfirmAuthS>
+          <BtnsWrapper>
+            <BtnConfirm type="submit">Add</BtnConfirm>
+            <BtnConfirm
+              variant="btn-cancel"
+              type="button"
+              onClick={handleClickBtnClose}
+            >
+              Cancel
+            </BtnConfirm>
+          </BtnsWrapper>
         </FormStyled>
-
-        {/* <Link to="/auth/registerForm"> */}
-        <BtnToggleFormAuthS type="button">Cancel</BtnToggleFormAuthS>
-        {/* </Link> */}
       </StyledModal>
     </>
   );

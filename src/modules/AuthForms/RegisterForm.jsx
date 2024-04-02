@@ -4,15 +4,22 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
-
-
 import { registerUserThunk } from "../../redux/Thunks/userThunk";
 import { notifyRegisterError } from "../../shared/components/NotificationToastify/Toasts";
-import { AuthTitle, BtnEyeStyled, ErrorsStyled, FormStyled, InputPasswWrapStyled, InputsWrapper, LuEyeOffStyled, LuEyeStyled, StyledModal } from "./LoginFormStyled";
+import {
+  AuthTitle,
+  BtnEyeStyled,
+  ErrorsStyled,
+  FormStyled,
+  InputPasswWrapStyled,
+  InputsWrapper,
+  LuEyeOffStyled,
+  LuEyeStyled,
+  StyledModal,
+} from "./LoginFormStyled";
 import InputDefault from "../../shared/components/InputDefault/InputDefault";
-import BtnConfirmAuth from "../../shared/components/Buttons/BtnConfirmAuth/BtnConfirmAuth";
-import BtnToggleFormAuth from "../../shared/components/Buttons/BtnToggleFormAuth/BtnToggleFormAuth";
-
+import BtnConfirm from "../../shared/components/Buttons/BtnConfirm/BtnConfirm";
+import BtnToggleForm from "../../shared/components/Buttons/BtnToggleForm/BtnToggleForm";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -53,14 +60,14 @@ const RegisterForm = () => {
     },
   });
 
-//   const handleChangeForm = (e) => {
-//     dispatch(toggleFormName(""));
-//     dispatch(toggleFormName(e.currentTarget.name))
-//       }
+  //   const handleChangeForm = (e) => {
+  //     dispatch(toggleFormName(""));
+  //     dispatch(toggleFormName(e.currentTarget.name))
+  //       }
 
-// const handleChangeForm = () => {
-//     prev()
-// }
+  // const handleChangeForm = () => {
+  //     prev()
+  // }
 
   return (
     <>
@@ -124,11 +131,11 @@ const RegisterForm = () => {
               <ErrorsStyled>{formik.errors.password}</ErrorsStyled>
             ) : null}
           </InputsWrapper>
-          <BtnConfirmAuth type="submit">Enter</BtnConfirmAuth>
+          <BtnConfirm type="submit">Enter</BtnConfirm>
         </FormStyled>
 
         <Link to="/">
-          <BtnToggleFormAuth type="button" >Login</BtnToggleFormAuth>
+          <BtnToggleForm type="button">Login</BtnToggleForm>
         </Link>
       </StyledModal>
     </>

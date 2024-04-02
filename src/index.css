@@ -108,7 +108,7 @@ img {
   }
 } */
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
@@ -119,4 +119,9 @@ img {
 }
 ::-webkit-scrollbar-track:hover {
   background: #21295c;
+} */
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.MuiMenu-paper.MuiMenu-paper.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  border-radius: 15px;
+  background-color: #41ddd3;
 }

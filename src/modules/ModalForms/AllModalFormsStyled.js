@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { LuEye, LuEyeOff } from "react-icons/lu";
-import { AiOutlineClose } from "react-icons/ai";
+import { Select } from "@mui/material";
 
 export const StyledModal = styled.div`
   position: absolute;
@@ -11,56 +10,37 @@ export const StyledModal = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  max-width: 474px;
+  max-width: 536px;
   width: 100%;
-  padding: 60px 80px;
-  border: 1px solid var(--text-color-30);
-  border-radius: 20px;
-  background-color: var(--second-background);
+  padding: 45px 40px;
+  border: 1px solid #23fcee;
+  border-radius: 12px;
+  background-color: #ffffff;
 
   @media screen and (max-width: 768px) {
+    flex-direction: column;
     max-width: 335px;
     padding: 40px 20px;
   }
 `;
 
-// export const StyledCloseBtn = styled.button`
-//   position: absolute;
-//   top: 24px;
-//   right: 24px;
-//   width: 28px;
-//   height: 28px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   background-color: transparent;
-//   border: none;
-//   cursor: pointer;
-
-//   @media screen and (max-width: 768px) {
-//     width: 24px;
-//     height: 24px;
-//     top: 16px;
-//     right: 16px;
-//   }
-// `;
-
-// ================================
-
-export const AuthTitle = styled.h2`
+export const ModalTitle = styled.h2`
   align-self: flex-start;
   font-size: 24px;
-  font-family: "GilroyBold";
-  line-height: 1.3;
-  color: var(--text-color-100);
+  line-height: 1.16;
+  font-weight: 600;
+  color: #797a7a;
 
   @media screen and (max-width: 768px) {
     font-size: 20px;
-    line-height: 1.4;
+    line-height: 1.2;
   }
 `;
 
 export const FormStyled = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
 `;
 
@@ -68,91 +48,50 @@ export const InputsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  gap: 8px;
   row-gap: 14px;
-  margin-top: 32px;
-  margin-bottom: 32px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   width: 100%;
 
   @media screen and (max-width: 768px) {
+    flex-direction: column;
     max-width: 295px;
   }
 `;
 
-export const InputPasswWrapStyled = styled.div`
+export const InputsGroupS = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  gap: 14px;
   width: 100%;
-  position: relative;
-`;
-
-export const LuEyeStyled = styled(LuEye)`
-  color: var(--text-color-100);
-`;
-
-export const LuEyeOffStyled = styled(LuEyeOff)`
-  color: var(--text-color-100);
-`;
-
-export const BtnEyeStyled = styled.button`
-  position: absolute;
-  top: 50%;
-  right: 14px;
-  width: 26px;
-  height: 26px;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-`;
-
-export const RestoreStyled = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 16px;
-  font-size: 16px;
-  line-height: 1;
-  background-color: transparent;
-  color: #f4f4f480;
-  border: none;
-  cursor: pointer;
-  transition: color 250ms linear;
-  &:hover,
-  &:focus {
-    color: #f4f4f44d;
-  }
-`;
-
-export const ErrorsStyled = styled.div`
-  margin: 0 0;
-  font-size: 12px;
-  line-height: 1.1;
-  color: #e65368;
 `;
 
 export const InputS = styled.input`
-  box-sizing: border-box;
   padding: 14px 18px;
   width: 100%;
   height: 44px;
   border-radius: 30px;
-  border: 1px solid #f4f4f499;
-  font-size: 16px;
+  border: 1px solid #23fcee;
+  font-size: 14px;
   line-height: 1;
   outline: 1px solid transparent;
   background: transparent;
-  color: #f4f4f4;
+  color: #626464;
+  transition: border-color 250ms ease-in-out, box-shadow 250ms ease-in-out;
 
   &::placeholder {
-    color: #f4f4f466;
+    color: #797a7a;
     background: transparent;
   }
 
   &:hover,
   &:focus {
-    border-color: #f4f4f4;
+    border-color: #41ddd3;
+    box-shadow: 1px 0px 8px 1px rgba(65, 221, 211, 0.75);
+    -webkit-box-shadow: 1px 0px 8px 1px rgba(65, 221, 211, 0.75);
+    -moz-box-shadow: 1px 0px 8px 1px rgba(65, 221, 211, 0.75);
   }
 
   &.input-password {
@@ -167,88 +106,50 @@ export const InputS = styled.input`
   }
 `;
 
-export const BtnToggleFormAuthS = styled.button`
-  margin-top: 16px;
-  font-family: "GilroyBold";
-  font-size: 16px;
-  line-height: 1;
-  background-color: transparent;
-  color: #f4f4f4;
-  border: none;
-  border-bottom: 1px solid #f4f4f4;
-  cursor: pointer;
-  transition: border-bottom 250ms linear;
-
-  &:hover,
-  &:focus {
-    border-bottom: 1px solid #f4f4f44d;
-  }
-
-  @media screen and (max-width: 768px) {
-    max-width: 295px;
-    font-size: 14px;
-    line-height: 1.1;
-  }
-`;
-
-export const BtnConfirmAuthS = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 314px;
+export const SelectStyled = styled(Select)`
   width: 100%;
-  height: 48px;
-  border-radius: 30px;
-  font-family: "GilroyBold";
-  color: #f4f4f4;
-  background-color: #205bf1;
-  margin: 0 auto;
-  border: transparent;
-  transform: scale(1);
-  transition: transform 250ms linear;
+  height: 44px;
+  border: 1px solid #23fcee;
+  outline: 1px solid transparent;
+  transition: border-color 250ms ease-in-out, box-shadow 250ms ease-in-out;
+
+  .MuiSelect-select.MuiSelect-outlined.MuiInputBase-input.MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding: 14px 18px;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border: none;
+  }
+
+  p {
+    font-family: "Inter";
+    color: #797a7a;
+  }
 
   &:hover,
   &:focus {
-    transform: scale(1.1);
-  }
-
-  @media screen and (max-width: 768px) {
-    max-width: 295px;
-    font-size: 14px;
-    line-height: 1.1;
+    border-color: #41ddd3;
+    box-shadow: 1px 0px 8px 1px rgba(65, 221, 211, 0.75);
+    -webkit-box-shadow: 1px 0px 8px 1px rgba(65, 221, 211, 0.75);
+    -moz-box-shadow: 1px 0px 8px 1px rgba(65, 221, 211, 0.75);
   }
 `;
 
-// -----------------------------------------------
+export const ErrorsStyled = styled.div`
+  margin: 0 0;
+  font-size: 12px;
+  line-height: 1.1;
+  color: #e65368;
+`;
 
-export const BtnCloseS = styled.button`
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 28px;
-  height: 28px;
+export const BtnsWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+  gap: 8px;
+  max-width: 274px;
+  width: 100%;
 
   @media screen and (max-width: 768px) {
-    width: 24px;
-    height: 24px;
-    top: 16px;
-    right: 16px;
-  }
-`;
-// --------------------
-export const AiOutlineCloseS = styled(AiOutlineClose)`
-  width: 28px;
-  height: 28px;
-  fill: #f4f4f4;
-
-  @media screen and (max-width: 768px) {
-    width: 24px;
-    height: 24px;
+    max-width: 300px;
   }
 `;
