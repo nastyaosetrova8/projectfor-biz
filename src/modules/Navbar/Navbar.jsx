@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import {
-//   LightModeOutlined,
-//   DarkModeOutlined,
+  //   LightModeOutlined,
+  //   DarkModeOutlined,
   Menu as MenuIcon,
-  Search,
-//   SettingsOutlined,
+
+  //   SettingsOutlined,
   ArrowDropDownOutlined,
+  Search,
 } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 // import { setMode } from "state";
@@ -16,11 +17,11 @@ import {
   Box,
   Typography,
   IconButton,
-  InputBase,
   Toolbar,
   Menu,
   MenuItem,
-  useTheme,
+  InputBase,
+  // useTheme,
 } from "@mui/material";
 import FlexBetween from "../../shared/components/FlexBetween/FlexBetween";
 import { useState } from "react";
@@ -28,7 +29,7 @@ import { logOutUserThunk } from "../../redux/Thunks/userThunk";
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
-  const theme = useTheme();
+  // const theme = useTheme();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
@@ -53,8 +54,8 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
           <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon />
           </IconButton>
-          <FlexBetween
-            backgroundColor={theme.palette.background.alt}
+          {/* <FlexBetween
+            backgroundColor={"red"}
             borderRadius="9px"
             gap="3rem"
             p="0.1rem 1.5rem"
@@ -63,12 +64,12 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             <IconButton>
               <Search />
             </IconButton>
-          </FlexBetween>
+          </FlexBetween> */}
         </FlexBetween>
 
         {/* Right */}
         {/* <FlexBetween gap="1.5rem"> */}
-          {/* <IconButton onClick={() => dispatch(setMode())}>
+        {/* <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
               <DarkModeOutlined sx={{ fontSize: "25px" }} />
             ) : (
@@ -79,66 +80,66 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             <SettingsOutlined sx={{ fontSize: "25px" }} />
           </IconButton> */}
 
-          <FlexBetween>
-            <Button
-              onClick={handleClick}
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                textTransform: "none",
-                gap: "1rem",
-              }}
-            >
-              <Box
-                component="img"
-                alt="profile"
-                src={profile}
-                height="32px"
-                width="32px"
-                borderRadius="50%"
-                sx={{ objectFit: "cover" }}
-              />
-              <Box textAlign="left">
-                <Typography
-                  fontWeight="bold"
-                  fontSize="0.85rem"
-                  sx={{ color: theme.palette.secondary[100] }}
-                >
-                  {user.name}
-                </Typography>
-                {/* <Typography
+        <FlexBetween>
+          <Button
+            onClick={handleClick}
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              textTransform: "none",
+              gap: "1rem",
+            }}
+          >
+            <Box
+              component="img"
+              alt="profile"
+              src={profile}
+              height="32px"
+              width="32px"
+              borderRadius="50%"
+              sx={{ objectFit: "cover" }}
+            />
+            <Box textAlign="left">
+              <Typography
+                fontWeight="bold"
+                fontSize="0.85rem"
+                sx={{ color: "#797a7a" }}
+              >
+                {user.name}
+              </Typography>
+              {/* <Typography
                   fontSize="0.75rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
                   {user.occupation}
                 </Typography> */}
-              </Box>
-              <ArrowDropDownOutlined
-                sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
-              />
-            </Button>
-            <Menu
-              anchorEl={anchorEl}
-              open={isOpen}
-              onClose={handleClose}
-              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-            >
-              <MenuItem onClick={() => handleLogOut()}>Log Out</MenuItem>
-            </Menu>
-          </FlexBetween>
+            </Box>
+            <ArrowDropDownOutlined
+              sx={{ color: "#41ddd3", fontSize: "25px" }}
+            />
+          </Button>
+          <Menu
+            anchorEl={anchorEl}
+            open={isOpen}
+            onClose={handleClose}
+            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          >
+            <MenuItem onClick={() => handleLogOut()} sx={{ color: "#797a7a" }}>
+              Log Out
+            </MenuItem>
+          </Menu>
+        </FlexBetween>
         {/* </FlexBetween> */}
       </Toolbar>
     </AppBar>
   );
 };
 
-
 Navbar.propTypes = {
-    user: PropTypes.any,
-    isSidebarOpen: PropTypes.any,
-    setIsSidebarOpen: PropTypes.any,
-  };
-  
+  user: PropTypes.any,
+  isSidebarOpen: PropTypes.any,
+  setIsSidebarOpen: PropTypes.any,
+};
 
 export default Navbar;
