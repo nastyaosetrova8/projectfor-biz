@@ -42,15 +42,17 @@ const SharedLayout = () => {
         user={user || {}}
         isNonDesktop={isNonDesktop}
         drawerWidth="84px"
-        drawerHeight="100vh"
+        // drawerHeight="100vh"
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
       />
+
       <Box flexGrow={1}>
         <Navbar
           user={user || {}}
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
+          isNonDesktop={isNonDesktop}
         />
         <Outlet />
       </Box>

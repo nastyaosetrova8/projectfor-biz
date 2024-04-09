@@ -7,13 +7,15 @@ import { selectIsAuth } from "./redux/selectors";
 import { currentUserThunk } from "./redux/Thunks/userThunk";
 import PrivateRoute from "./Guard/PrivateRoute";
 import Loader from "./shared/components/Loader/Loader";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import Register from "./pages/LoginPage/Register";
+// import Login from "./pages/AuthPage/Login";
+// import Register from "./pages/LoginPage/Register";
 import PublicRoute from "./Guard/PublicRoute";
 import NotificationToast from "./shared/components/NotificationToastify/NotificationToast";
 
-// const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
-// const LoginPage = lazy(() => import("./pages/LoginPage/"));
+const AuthPage = lazy(() => import("./pages/AuthPage/AuthPage"));
+
+// const Login = lazy(() => import("./pages/AuthPage/Login"));
+// const Register = lazy(() => import("./pages/AuthPage/Register"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage/DashboardPage"));
 const CustomersPage = lazy(() => import("./pages/CustomersPage/CustomersPage"));
 const ProductsPage = lazy(() => import("./pages/ProductsPage/ProductsPage"));
@@ -37,7 +39,16 @@ function App() {
             path="/"
             element={
               <PublicRoute>
-                <LoginPage />
+                <AuthPage />
+              </PublicRoute>
+            }
+          />
+
+          {/* <Route
+            path="/"
+            element={
+              <PublicRoute>
+                <Login />
               </PublicRoute>
             }
           />
@@ -48,7 +59,7 @@ function App() {
                 <Register />
               </PublicRoute>
             }
-          />
+          /> */}
 
           <Route path="/" element={<SharedLayout />}>
             <Route

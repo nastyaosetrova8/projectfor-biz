@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 import { registerUserThunk } from "../../redux/Thunks/userThunk";
@@ -134,9 +134,9 @@ const RegisterForm = () => {
           <BtnConfirm type="submit">Enter</BtnConfirm>
         </FormStyled>
 
-        <Link to="/">
-          <BtnToggleForm type="button">Login</BtnToggleForm>
-        </Link>
+        {/* <Link to="/"> */}
+        <BtnToggleForm type="button">Login</BtnToggleForm>
+        {/* </Link> */}
       </StyledModal>
     </>
   );

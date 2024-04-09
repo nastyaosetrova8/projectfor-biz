@@ -231,7 +231,7 @@ const ProductsList = () => {
           }}
           sx={{
             fontFamily: "inherit",
-            fontSize: "16px",
+            fontSize: "14px",
           }}
         />
       </Box>

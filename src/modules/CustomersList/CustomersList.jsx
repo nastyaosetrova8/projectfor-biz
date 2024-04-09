@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import { Avatar, Box } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 // import Header from "components/Header";
 import { DataGrid } from "@mui/x-data-grid";
+import { BoxStyled } from "../RecentCustomersList/RecentCustomersListStyled";
 
 const CustomersList = ({ customers, isLoading }) => {
   // const theme = useTheme();
@@ -61,52 +62,107 @@ const CustomersList = ({ customers, isLoading }) => {
   ];
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box mt="8.5rem">
+      <BoxStyled>
+        <Typography
+          variant="h4"
+          fontWeight="600"
+          sx={{
+            //   color:
+            fontFamily: "inherit",
+          }}
+        >
+          All customers
+        </Typography>
+      </BoxStyled>
+
       {/* <Header title="CUSTOMERS" subtitle="List of Customers" /> */}
-      <Box
-        mt="40px"
-        // height="75vh"
-        height="100%"
-        sx={{
-          "& .MuiDataGrid-root": {
-            // border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            // borderBottom: "none",
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: "#5BFF33",
-            color: "#768173",
-            borderBottom: "none",
-          },
-          "& .css-yrdy0g-MuiDataGrid-columnHeaderRow": {},
-          "& .MuiDataGrid-virtualScroller": {
-            // backgroundColor: ,
-          },
-          "& .MuiDataGrid-footerContainer": {
-            // backgroundColor: ,
-            // color: ,
-            borderTop: "none",
-          },
-          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            // color: !important`,
-          },
-        }}
-      >
-        <DataGrid
-          loading={isLoading || !customers}
-          getRowId={(row) => row._id}
-          rows={customers}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 5,
+      <Box m="0 2.5rem 1.5rem">
+        <Box
+          // mt="80px"
+          // height="75vh"
+          height="100%"
+          sx={{
+            "& .MuiDataGrid-root": {
+              // border: "none",
+              paddingLeft: "8px",
+              paddingRight: "8px",
+            },
+
+            "& .MuiDataGrid-columnHeaders": {
+              // backgroundColor: "#5BFF33",
+              // color: "#768173",
+              // fontWeight: "600",
+              borderTop: "none",
+              borderBottom: "1px solid #B0B4B4",
+            },
+            "& .MuiDataGrid-columnHeader": {
+              // backgroundColor: "#41ddd3",
+              // color: "#797a7a",
+              // borderBottom: "none",
+              "&:not(:last-child)": {
+                borderRight: "1px solid #B0B4B4",
               },
             },
+            "& .MuiDataGrid-iconSeparator": {
+              display: "none",
+            },
+
+            "& .MuiDataGrid-columnHeaderTitle": {
+              color: "#797a7a",
+              fontFamily: "inherit",
+              fontWeight: "600",
+            },
+
+            "& .MuiDataGrid-cell": {
+              // borderBottom: "none",
+              "&:not(:last-child)": {
+                borderRight: "1px solid #B0B4B4",
+              },
+            },
+
+            // "& .MuiDataGrid-virtualScroller": {
+            //   backgroundColor: "yellow",
+            // },
+            "& .MuiDataGrid-footerContainer": {
+              // color: ,
+              // borderTop: "none",
+            },
+            "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+              // color: !important`,
+            },
+
+            // "& .MuiDataGrid-row--lastVisible": {
+            //   borderBottom: "none",
+            // },
           }}
-          pageSizeOptions={[5]}
-        />
+        >
+          <DataGrid
+            loading={isLoading || !customers}
+            getRowId={(row) => row._id}
+            rows={customers}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: {
+                  pageSize: 5,
+                },
+              },
+            }}
+            pageSizeOptions={[5]}
+            sx={{
+              borderTop: "none",
+              borderBottomLeftRadius: "8px",
+              borderBottomRightRadius: "8px",
+              borderTopLeftRadius: "0",
+              borderTopRightRadius: "0",
+              borderColor: "#23fcee",
+              color: "",
+              fontFamily: "inherit",
+              fontSize: "14px",
+            }}
+          />
+        </Box>
       </Box>
     </Box>
   );

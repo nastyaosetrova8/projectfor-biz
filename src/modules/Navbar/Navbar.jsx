@@ -6,7 +6,8 @@ import {
 
   //   SettingsOutlined,
   ArrowDropDownOutlined,
-  Search,
+  // Search,
+  // Dashboard,
 } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 // import { setMode } from "state";
@@ -20,40 +21,101 @@ import {
   Toolbar,
   Menu,
   MenuItem,
-  InputBase,
+  // InputBase,
   // useTheme,
 } from "@mui/material";
 import FlexBetween from "../../shared/components/FlexBetween/FlexBetween";
 import { useState } from "react";
 import { logOutUserThunk } from "../../redux/Thunks/userThunk";
+import PublicIcon from "@mui/icons-material/Public";
+import { useLocation } from "react-router-dom";
 
-const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
+const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isNonDesktop }) => {
   const dispatch = useDispatch();
-  // const theme = useTheme();
-
   const [anchorEl, setAnchorEl] = useState(null);
+  const location = useLocation();
+
   const isOpen = Boolean(anchorEl);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
-
   const handleLogOut = () => {
     dispatch(logOutUserThunk());
   };
 
+  const isDashboard = location.pathname === "/dashboard";
+  const isCastomersPage = location.pathname === "/customers";
+  const isProductsPage = location.pathname === "/products";
+
   return (
     <AppBar
       sx={{
-        position: "static",
-        background: "none",
+        // position: "static",
+        background: "#ffffff",
         boxShadow: "none",
+        borderBottom: "1px solid #23fcee",
+        position: "fixed",
+        height: "84px",
+        display: "flex",
+        justifyContent: "center",
+        // zIndex: "1300px",
       }}
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
         {/* Left */}
+
         <FlexBetween>
-          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-            <MenuIcon />
-          </IconButton>
+          {isNonDesktop && (
+            <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+              <MenuIcon />
+            </IconButton>
+          )}
+
+          <FlexBetween>
+            <PublicIcon
+              sx={{
+                width: "40px",
+                height: "40px",
+                color: "#24bfb5",
+              }}
+            />
+          </FlexBetween>
+          <FlexBetween
+            style={{
+              // display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              alignItems: "flex-start",
+              height: "60px",
+            }}
+          >
+            <Typography
+              fontWeight="bold"
+              fontSize="16px"
+              sx={{ color: "#24bfb5" }}
+            >
+              YourBiz
+            </Typography>
+
+            <FlexBetween sx={{ flexWrap: "wrap" }}>
+              <Typography
+                // fontWeight="bold"
+                fontSize="12px"
+                sx={{ color: "#24bfb5" }}
+              >
+                {isDashboard && "Dashboard"}
+                {isCastomersPage && "All customers"}
+                {isProductsPage && "All products"} &#124;&nbsp;
+              </Typography>
+              <Typography
+                // fontWeight="bold"
+                fontSize="12px"
+                lineHeight="1"
+                sx={{ color: "#24bfb5" }}
+              >
+                {user.email}
+              </Typography>
+            </FlexBetween>
+          </FlexBetween>
           {/* <FlexBetween
             backgroundColor={"red"}
             borderRadius="9px"
@@ -140,6 +202,7 @@ Navbar.propTypes = {
   user: PropTypes.any,
   isSidebarOpen: PropTypes.any,
   setIsSidebarOpen: PropTypes.any,
+  isNonDesktop: PropTypes.bool,
 };
 
 export default Navbar;

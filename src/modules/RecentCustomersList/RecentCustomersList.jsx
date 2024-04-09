@@ -98,15 +98,15 @@ const RecentCustomersList = ({ isLoading, recentCustomers }) => {
 
             // "& .MuiDataGrid-cell-textLeft": {
             // "& .MuiDataGrid-withBorderColor": {
-            "& .MuiDataGrid-cell": {
-              "&:not(:last-child)": {
-                borderRight: "1px solid #B0B4B4",
-              },
-              //   // "&:last-child": {
-              //   //   border: "1px solid transparent",
-              //   // },
-            },
+
             //
+            "& .MuiDataGrid-columnHeaders": {
+              // backgroundColor: "#5BFF33",
+              // color: "#768173",
+              // fontWeight: "600",
+              borderTop: "none",
+              borderBottom: "1px solid #B0B4B4",
+            },
             "& .MuiDataGrid-columnHeader": {
               "&:not(:last-child)": {
                 borderRight: "1px solid #B0B4B4",
@@ -125,20 +125,21 @@ const RecentCustomersList = ({ isLoading, recentCustomers }) => {
             //     borderRight: "1px solid #5BFF33",
             //   },
             // },
-            "& .MuiDataGrid-columnHeaders": {
-              // backgroundColor: "#5BFF33",
-              // color: "#768173",
-              // fontWeight: "600",
-              borderTop: "none",
-              borderBottom: "1px solid #B0B4B4",
-            },
+
             "& .MuiDataGrid-columnHeaderTitle": {
-              color: "#768173",
+              color: "#797a7a",
               fontFamily: "inherit",
               fontWeight: "600",
             },
-            "& .css-yrdy0g-MuiDataGrid-columnHeaderRow": {},
-            "& .MuiDataGrid-virtualScroller": {},
+            "& .MuiDataGrid-cell": {
+              "&:not(:last-child)": {
+                borderRight: "1px solid #B0B4B4",
+              },
+              //   // "&:last-child": {
+              //   //   border: "1px solid transparent",
+              //   // },
+            },
+
             "& .MuiDataGrid-footerContainer": {
               // backgroundColor: ,
               // color: ,
@@ -178,7 +179,7 @@ const RecentCustomersList = ({ isLoading, recentCustomers }) => {
               borderColor: "#23fcee",
               color: "",
               fontFamily: "inherit",
-              fontSize: "16px",
+              fontSize: "14px",
               // mt: "0",
               // "& .css-yrdy0g-MuiDataGrid-columnHeaderRow": {
               //   borderRight: "1px solod black",

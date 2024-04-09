@@ -1,7 +1,8 @@
+import PropTypes from "prop-types";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { loginUserThunk } from "../../redux/Thunks/userThunk";
 import {
@@ -23,7 +24,7 @@ import {
 import BtnConfirm from "../../shared/components/Buttons/BtnConfirm/BtnConfirm";
 import BtnToggleForm from "../../shared/components/Buttons/BtnToggleForm/BtnToggleForm";
 
-const LoginForm = () => {
+const LoginForm = ({ onSetForm }) => {
   const dispatch = useDispatch();
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordShown = () => setPasswordShown((show) => !show);
@@ -109,12 +110,18 @@ const LoginForm = () => {
           <BtnConfirm type="submit">Enter</BtnConfirm>
         </FormStyled>
 
-        <Link to="/register">
-          <BtnToggleForm type="button">Register</BtnToggleForm>
-        </Link>
+        {/* <Link to="/register"> */}
+        <BtnToggleForm type="button" onClick={onSetForm}>
+          Register
+        </BtnToggleForm>
+        {/* </Link> */}
       </StyledModal>
     </>
   );
+};
+
+LoginForm.propTypes = {
+  onSetForm: PropTypes.any,
 };
 
 export default LoginForm;
