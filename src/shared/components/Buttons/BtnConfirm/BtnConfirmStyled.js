@@ -7,10 +7,12 @@ export const BtnConfirmS = styled.button`
   width: 100%;
   height: 44px;
   border-radius: 60px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.28;
   color: #797a7a;
   background-color: #41ddd3;
+  box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
   border: transparent;
   transition: border 250ms ease-in-out, box-shadow 250ms ease-in-out;

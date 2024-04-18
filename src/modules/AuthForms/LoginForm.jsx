@@ -1,12 +1,10 @@
-import PropTypes from "prop-types";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { loginUserThunk } from "../../redux/Thunks/userThunk";
 import {
-  AuthTitle,
   BtnEyeStyled,
   ErrorsStyled,
   FormStyled,
@@ -23,8 +21,9 @@ import {
 } from "../../shared/components/NotificationToastify/Toasts";
 import BtnConfirm from "../../shared/components/Buttons/BtnConfirm/BtnConfirm";
 import BtnToggleForm from "../../shared/components/Buttons/BtnToggleForm/BtnToggleForm";
+import { QuestionS } from "../../shared/components/Buttons/BtnToggleForm/BtnToggleFormStyled";
 
-const LoginForm = ({ onSetForm }) => {
+const LoginForm = () => {
   const dispatch = useDispatch();
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordShown = () => setPasswordShown((show) => !show);
@@ -62,14 +61,14 @@ const LoginForm = ({ onSetForm }) => {
   return (
     <>
       <StyledModal>
-        <AuthTitle>Login</AuthTitle>
+        {/* <AuthTitle>Login</AuthTitle> */}
         <FormStyled onSubmit={formik.handleSubmit}>
           <InputsWrapper>
             <InputDefault
               name="email"
               type="email"
               value={formik.values.email}
-              placeholder="Email"
+              placeholder="Email address"
               // autoComplete="off"
               onChange={formik.handleChange}
               label="Email"
@@ -107,21 +106,16 @@ const LoginForm = ({ onSetForm }) => {
               <ErrorsStyled>{formik.errors.password}</ErrorsStyled>
             ) : null}
           </InputsWrapper>
-          <BtnConfirm type="submit">Enter</BtnConfirm>
+          <BtnConfirm type="submit">Log in</BtnConfirm>
         </FormStyled>
 
-        {/* <Link to="/register"> */}
-        <BtnToggleForm type="button" onClick={onSetForm}>
-          Register
-        </BtnToggleForm>
-        {/* </Link> */}
+        <Link to="/auth/registerForm">
+          <QuestionS>Don't have an account? </QuestionS>
+          <BtnToggleForm type="button">Register</BtnToggleForm>
+        </Link>
       </StyledModal>
     </>
   );
-};
-
-LoginForm.propTypes = {
-  onSetForm: PropTypes.any,
 };
 
 export default LoginForm;

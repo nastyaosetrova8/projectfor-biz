@@ -6,7 +6,6 @@ import {
   BtnsWrapper,
   ErrorsStyled,
   FormStyled,
-  InputS,
   InputsGroupS,
   InputsWrapper,
   ModalTitle,
@@ -22,6 +21,7 @@ import {
 import { editProductThunk } from "../../../redux/Thunks/ProductsThunk";
 import BtnConfirm from "../../../shared/components/Buttons/BtnConfirm/BtnConfirm";
 import BtnClose from "../../../shared/components/Buttons/BtnClose/BtnClose";
+import InputDefault from "../../../shared/components/InputDefault/InputDefault";
 
 const EditProductForm = () => {
   const dispatch = useDispatch();
@@ -97,7 +97,7 @@ const EditProductForm = () => {
         <FormStyled onSubmit={formik.handleSubmit}>
           <InputsWrapper>
             <InputsGroupS>
-              <InputS
+              <InputDefault
                 name="name"
                 type="text"
                 value={formik.values.name}
@@ -109,7 +109,7 @@ const EditProductForm = () => {
                 <ErrorsStyled>{formik.errors.name}</ErrorsStyled>
               ) : null}
 
-              <InputS
+              <InputDefault
                 name="stock"
                 type="number"
                 value={formik.values.stock}
@@ -121,7 +121,7 @@ const EditProductForm = () => {
                 <ErrorsStyled>{formik.errors.stock}</ErrorsStyled>
               ) : null}
 
-              <InputS
+              <InputDefault
                 name="price"
                 type="number"
                 value={formik.values.price}
@@ -163,7 +163,7 @@ const EditProductForm = () => {
                 <ErrorsStyled>{formik.errors.category}</ErrorsStyled>
               ) : null}
 
-              <InputS
+              <InputDefault
                 name="suppliers"
                 type="text"
                 value={formik.values.suppliers}

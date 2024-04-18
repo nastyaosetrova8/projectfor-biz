@@ -11,6 +11,7 @@ import Loader from "./shared/components/Loader/Loader";
 // import Register from "./pages/LoginPage/Register";
 import PublicRoute from "./Guard/PublicRoute";
 import NotificationToast from "./shared/components/NotificationToastify/NotificationToast";
+import MainPage from "./pages/MainPage/MainPage";
 
 const AuthPage = lazy(() => import("./pages/AuthPage/AuthPage"));
 
@@ -39,10 +40,12 @@ function App() {
             path="/"
             element={
               <PublicRoute>
-                <AuthPage />
+                <MainPage />
               </PublicRoute>
             }
-          />
+          >
+            <Route path="auth/:type" element={<AuthPage />} />
+          </Route>
 
           {/* <Route
             path="/"

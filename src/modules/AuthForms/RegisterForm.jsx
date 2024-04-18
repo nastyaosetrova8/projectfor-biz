@@ -1,13 +1,12 @@
 import { useFormik } from "formik";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 import { registerUserThunk } from "../../redux/Thunks/userThunk";
 import { notifyRegisterError } from "../../shared/components/NotificationToastify/Toasts";
 import {
-  AuthTitle,
   BtnEyeStyled,
   ErrorsStyled,
   FormStyled,
@@ -72,7 +71,7 @@ const RegisterForm = () => {
   return (
     <>
       <StyledModal>
-        <AuthTitle>Sign Up</AuthTitle>
+        {/* <AuthTitle>Sign Up</AuthTitle> */}
         <FormStyled onSubmit={formik.handleSubmit}>
           <InputsWrapper>
             <InputDefault
@@ -93,7 +92,7 @@ const RegisterForm = () => {
               name="email"
               type="email"
               value={formik.values.email}
-              placeholder="Email"
+              placeholder="Email address"
               // autoComplete="off"
               onChange={formik.handleChange}
               label="Email"
@@ -131,12 +130,12 @@ const RegisterForm = () => {
               <ErrorsStyled>{formik.errors.password}</ErrorsStyled>
             ) : null}
           </InputsWrapper>
-          <BtnConfirm type="submit">Enter</BtnConfirm>
+          <BtnConfirm type="submit">Sign Up</BtnConfirm>
         </FormStyled>
 
-        {/* <Link to="/"> */}
-        <BtnToggleForm type="button">Login</BtnToggleForm>
-        {/* </Link> */}
+        <Link to="/auth/loginForm">
+          <BtnToggleForm type="button">Login</BtnToggleForm>
+        </Link>
       </StyledModal>
     </>
   );

@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 export const BtnToggleFormS = styled.button`
   margin-top: 16px;
-  font-family: "GilroyBold";
   font-size: 16px;
   line-height: 1;
   background-color: transparent;
-  color: #f4f4f4;
+  color: #41ddd3;
   border: none;
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 2px solid #41ddd3;
   cursor: pointer;
   transition: border-bottom 250ms linear;
 
@@ -22,4 +21,8 @@ export const BtnToggleFormS = styled.button`
     font-size: 14px;
     line-height: 1.1;
   }
+`;
+
+export const QuestionS = styled.span`
+  color: #797a7a;
 `;
