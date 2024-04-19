@@ -4,11 +4,8 @@ import { Box } from "@mui/material";
 export const BoxStyled = styled(Box)`
   display: flex;
   flex-direction: column;
-  /* align-items: ;
-  gap: 8px; */
   max-width: 240px;
   width: 100%;
-  /* height: 108px; */
   padding: 14px 18px 16px;
   border: 1px solid #23fcee;
   border-radius: 8px;

@@ -39,10 +39,6 @@ const AddProductForm = () => {
   const [sort] = useState({});
   const [search] = useState("");
 
-  // useEffect(() => {
-  //   dispatch(getProductsThunk());
-  // }, [dispatch]);
-
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -103,7 +99,6 @@ const AddProductForm = () => {
   const handleClickBtnClose = () => {
     document.body.classList.remove("no-scroll");
     dispatch(toggleShowModal(""));
-    // dispatch(saveId("null"));
   };
 
   return (
@@ -154,7 +149,6 @@ const AddProductForm = () => {
             <InputsGroupS>
               <SelectStyled
                 labelId="Category"
-                // id="demo-simple-select-helper"
                 value={formik.values.category}
                 name="category"
                 onChange={formik.handleChange}

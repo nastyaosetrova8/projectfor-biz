@@ -12,7 +12,6 @@ const CustomersPage = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
   const customers = useSelector(selectCustomers);
-  // console.log(customers)
   const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {

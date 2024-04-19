@@ -32,25 +32,9 @@ export const loginUserThunk = createAsyncThunk(
   }
 );
 
-// export const currentUserThunk = createAsyncThunk(
-//   "user/refresh",
-//   async (_, thunkAPI) => {
-//     const state = thunkAPI.getState();
-//     const token = state.user.token;
-//     try {
-//       setToken(token);
-//       const data = await currentUser();
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.response.data);
-//     }
-//   }
-// );
-
 export const currentUserThunk = createAsyncThunk(
   "user/refresh",
   async (_, thunkAPI) => {
-    // const state = thunkAPI.getState().user;
     const { token } = thunkAPI.getState().user;
     if (!token) return thunkAPI.rejectWithValue("Unable to refresh user");
     setToken(token);

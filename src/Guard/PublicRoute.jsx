@@ -8,9 +8,7 @@ const PublicRoute = ({ children }) => {
 };
 
 PublicRoute.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 export default PublicRoute;
-
-

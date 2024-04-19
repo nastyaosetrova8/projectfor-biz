@@ -21,8 +21,6 @@ import {
   Toolbar,
   Menu,
   MenuItem,
-  // InputBase,
-  // useTheme,
 } from "@mui/material";
 import FlexBetween from "../../shared/components/FlexBetween/FlexBetween";
 import { useState } from "react";
@@ -49,7 +47,6 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isNonDesktop }) => {
   return (
     <AppBar
       sx={{
-        // position: "static",
         background: "#ffffff",
         boxShadow: "none",
         borderBottom: "1px solid #23fcee",
@@ -57,12 +54,9 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isNonDesktop }) => {
         height: "84px",
         display: "flex",
         justifyContent: "center",
-        // zIndex: "1300px",
       }}
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        {/* Left */}
-
         <FlexBetween>
           {isNonDesktop && (
             <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
@@ -81,7 +75,6 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isNonDesktop }) => {
           </FlexBetween>
           <FlexBetween
             style={{
-              // display: "flex",
               flexDirection: "column",
               justifyContent: "flex-end",
               alignItems: "flex-start",
@@ -97,17 +90,12 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isNonDesktop }) => {
             </Typography>
 
             <FlexBetween sx={{ flexWrap: "wrap" }}>
-              <Typography
-                // fontWeight="bold"
-                fontSize="12px"
-                sx={{ color: "#24bfb5" }}
-              >
+              <Typography fontSize="12px" sx={{ color: "#24bfb5" }}>
                 {isDashboard && "Dashboard"}
                 {isCastomersPage && "All customers"}
                 {isProductsPage && "All products"} &#124;&nbsp;
               </Typography>
               <Typography
-                // fontWeight="bold"
                 fontSize="12px"
                 lineHeight="1"
                 sx={{ color: "#24bfb5" }}
@@ -116,31 +104,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isNonDesktop }) => {
               </Typography>
             </FlexBetween>
           </FlexBetween>
-          {/* <FlexBetween
-            backgroundColor={"red"}
-            borderRadius="9px"
-            gap="3rem"
-            p="0.1rem 1.5rem"
-          >
-            <InputBase placeholder="Search..." />
-            <IconButton>
-              <Search />
-            </IconButton>
-          </FlexBetween> */}
         </FlexBetween>
-
-        {/* Right */}
-        {/* <FlexBetween gap="1.5rem"> */}
-        {/* <IconButton onClick={() => dispatch(setMode())}>
-            {theme.palette.mode === "dark" ? (
-              <DarkModeOutlined sx={{ fontSize: "25px" }} />
-            ) : (
-              <LightModeOutlined sx={{ fontSize: "25px" }} />
-            )}
-          </IconButton>
-          <IconButton>
-            <SettingsOutlined sx={{ fontSize: "25px" }} />
-          </IconButton> */}
 
         <FlexBetween>
           <Button
@@ -170,12 +134,6 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isNonDesktop }) => {
               >
                 {user.name}
               </Typography>
-              {/* <Typography
-                  fontSize="0.75rem"
-                  sx={{ color: theme.palette.secondary[200] }}
-                >
-                  {user.occupation}
-                </Typography> */}
             </Box>
             <ArrowDropDownOutlined
               sx={{ color: "#41ddd3", fontSize: "25px" }}
@@ -192,16 +150,19 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen, isNonDesktop }) => {
             </MenuItem>
           </Menu>
         </FlexBetween>
-        {/* </FlexBetween> */}
       </Toolbar>
     </AppBar>
   );
 };
 
 Navbar.propTypes = {
-  user: PropTypes.any,
-  isSidebarOpen: PropTypes.any,
-  setIsSidebarOpen: PropTypes.any,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    _id: PropTypes.string,
+  }),
+  isSidebarOpen: PropTypes.bool,
+  setIsSidebarOpen: PropTypes.func,
   isNonDesktop: PropTypes.bool,
 };
 

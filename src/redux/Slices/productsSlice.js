@@ -17,7 +17,6 @@ const productsSlice = createSlice({
       })
 
       .addCase(addProductThunk.fulfilled, (state, { payload }) => {
-        // state.products.push(payload);
         state.products.unshift(payload);
       })
 
@@ -29,10 +28,6 @@ const productsSlice = createSlice({
           state.products[index] = payload;
         }
       }),
-
-  //   .addCase(getProductCategoriesThunk.fulfilled, (state, { payload }) => {
-  //     state.categories = payload;
-  //   }),
 });
 
 export const productsReducer = productsSlice.reducer;

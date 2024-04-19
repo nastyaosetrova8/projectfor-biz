@@ -4,7 +4,7 @@ export const selectError = (state) => state.root.error;
 export const selectUser = (state) => state.user.user;
 export const selectUserId = (state) => state.user.user.id;
 export const selectIsAuth = (state) => Boolean(state.user.token);
-export const selectUserAvatar = (state) => state.user.avatar;
+// export const selectUserAvatar = (state) => state.user.avatar;
 export const selectIsRefreshing = (state) => state.user.isRefreshing;
 
 export const selectFormName = (state) => state.modal.formName;

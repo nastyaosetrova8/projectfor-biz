@@ -8,13 +8,13 @@ import {
 
 export const getProductsThunk = createAsyncThunk(
   "products/getProducts",
-  async ({ page, pageSize, sort, search }) => {
-    // try {
-    const data = await getProducts({ page, pageSize, sort, search });
-    return data;
-    // } catch (error) {
-    //   return thunkAPI.rejectWithValue(error.message);
-    // }
+  async ({ page, pageSize, sort, search }, thunkAPI) => {
+    try {
+      const data = await getProducts({ page, pageSize, sort, search });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
@@ -23,7 +23,6 @@ export const addProductThunk = createAsyncThunk(
   async (products, thunkAPI) => {
     try {
       const data = await addProduct(products);
-      // thunkAPI.dispatch(updateBalance(data));
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

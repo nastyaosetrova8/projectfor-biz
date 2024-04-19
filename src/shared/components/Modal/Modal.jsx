@@ -43,9 +43,6 @@ const Modal = () => {
       {modalName === "addProduct" && isShowModal && <AddProductForm />}
       {modalName === "editProduct" && isShowModal && <EditProductForm />}
       {modalName === "delete" && isShowModal && <DeleteForm />}
-
-      {/* {modalName === "addSuppliers" && isShowModal && <AddSuppliersForm />}
-      {modalName === "editSuppliers" && isShowModal && <EditSuppliersForm />} */}
     </StyledOverlay>,
     modalRoot
   );

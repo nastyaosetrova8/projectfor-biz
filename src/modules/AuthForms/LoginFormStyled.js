@@ -1,11 +1,7 @@
 import styled from "styled-components";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 
-export const StyledModal = styled.div`
-  /* position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%); */
+export const BoxS = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

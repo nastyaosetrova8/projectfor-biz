@@ -32,11 +32,6 @@ export async function logOutUser() {
 }
 
 export async function updateUser(userData) {
-    const { data } = await instance.patch("/users/update-user", userData);
-    return data;
+  const { data } = await instance.patch("/users/update-user", userData);
+  return data;
 }
-
-// export async function getUserStats() {
-//   const { data } = await instance.get("/auth/stats");
-//   return data;
-// }

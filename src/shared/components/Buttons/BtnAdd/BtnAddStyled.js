@@ -16,9 +16,6 @@ export const BtnStyled = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* position: absolute;
-  bottom: 40px;
-  right: 40px; */
   transition: 250ms;
 
   &:hover,
@@ -30,9 +27,6 @@ export const BtnStyled = styled.button`
     box-shadow: 1px 5px 8px 0px rgba(0, 0, 0, 0.5);
     transition: 250ms;
   }
-
-  /* @media (max-width: 768px) {
-  } */
 `;
 
 export const PlusStyled = styled(BsPlusLg)`

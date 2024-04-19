@@ -4,25 +4,12 @@ import { BoxStyled, CardTitleStyled } from "./StatCardStyled";
 
 const StatCard = ({ title, value, icon }) => {
   return (
-    <BoxStyled
-      // gridColumn="span 2"
-      // gridRow="span 1"
-      // display="flex"
-      // flexDirection="column"
-      // justifyContent="space-between"
-      // p="1rem 1rem"
-      // flex="1 1 100%"
-      //   backgroundColor={}
-      // borderRadius="0.55rem"
-      sx={{}}
-    >
+    <BoxStyled sx={{}}>
       <CardTitleStyled>
         {icon}
         <Typography
           variant="h6"
-          // mr={6}
           sx={{
-            //   color:
             fontFamily: "inherit",
             fontSize: "18px",
             fontWeight: "600",
@@ -32,15 +19,7 @@ const StatCard = ({ title, value, icon }) => {
         </Typography>
       </CardTitleStyled>
 
-      <Typography
-        variant="h3"
-        fontWeight="600"
-        sx={
-          {
-            //   color:
-          }
-        }
-      >
+      <Typography variant="h3" fontWeight="600">
         {value}
       </Typography>
     </BoxStyled>
@@ -48,9 +27,9 @@ const StatCard = ({ title, value, icon }) => {
 };
 
 StatCard.propTypes = {
-  title: PropTypes.any,
-  value: PropTypes.any,
-  icon: PropTypes.any,
+  title: PropTypes.string,
+  value: PropTypes.number,
+  icon: PropTypes.element,
 };
 
 export default StatCard;

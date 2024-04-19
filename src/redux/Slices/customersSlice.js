@@ -26,10 +26,6 @@ const customersSlice = createSlice({
         const index = state.customers.findIndex((item) => item.id === payload);
         state.customers.splice(index, 1);
       }),
-
-  //   .addCase(getCustomerCategoriesThunk.fulfilled, (state, { payload }) => {
-  //     state.categories = payload;
-  //   }),
 });
 
 export const customersReducer = customersSlice.reducer;

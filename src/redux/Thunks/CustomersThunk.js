@@ -1,9 +1,3 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
-// // import { token } from 'Api/authApi';
-// import { updateBalance } from 'redux/Slices/AuthUserSlice';
-// import { getCurrentUserThunk } from './AuthUserThunk';
-// import { addCustomer, deleteCustomer, getCustomers, updateCustomer } from 'services/customersApi';
-
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   addCustomer,
@@ -17,7 +11,6 @@ export const getCustomersThunk = createAsyncThunk(
   "customers/getCustomers",
   async () => {
     const data = await getCustomers();
-    // console.log(data)
     return data;
   }
 );
@@ -27,7 +20,6 @@ export const addCustomerThunk = createAsyncThunk(
   async (customers, thunkAPI) => {
     try {
       const data = await addCustomer(customers);
-      // thunkAPI.dispatch(updateBalance(data));
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -58,16 +50,3 @@ export const deleteCustomerThunk = createAsyncThunk(
     return data;
   }
 );
-
-// export const getCustomerCategoriesThunk = createAsyncThunk(
-//   'customers/getCustomerCategories',
-//   async (tokenCustomer, thunkAPI) => {
-//     try {
-//       token.set(tokenCustomer);
-//       const data = await getCustomerCategories();
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );

@@ -32,13 +32,6 @@ const ProductsList = () => {
     pageSize: 5,
   });
 
-  // const { data, isLoading } = useGetTransactionsQuery({
-  //   page,
-  //   pageSize,
-  //   sort: JSON.stringify(sort),
-  //   search,
-  // });
-
   useEffect(() => {
     if (!isAuth) return;
     dispatch(
@@ -82,13 +75,11 @@ const ProductsList = () => {
       headerName: "Suppliers",
       flex: 0.5,
       sortable: false,
-      // renderCell: (params) => params.value.length,
     },
     {
       field: "price",
       headerName: "Price",
       flex: 0.5,
-      // renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
     },
     {
       field: "actions",
@@ -99,9 +90,6 @@ const ProductsList = () => {
           <Button
             variant="outlined"
             color="primary"
-            // type="button"
-            // name="editProduct"
-            // id={params.row._id}
             onClick={() => handleEdit(params.row)}
           >
             Edit
@@ -116,33 +104,20 @@ const ProductsList = () => {
         </div>
       ),
       flex: 0.6,
-      // renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
     },
   ];
 
   return (
-    <Box
-      m="2.5rem 2.5rem"
-      // style={{ height: 400, width: '100%' }}
-    >
-      {/* <Header title="PRODACTS" subtitle="Entire list of transactions" /> */}
+    <Box m="2.5rem 2.5rem">
       <Box
-        // height="60vh"
         height="100%"
         sx={{
-          "& .MuiDataGrid-root": {
-            // paddingLeft: "8px",
-            // paddingRight: "8px",
-            // border: "none",
-          },
           "& .MuiDataGrid-cell": {
-            // borderBottom: "none",
             "&:not(:last-child)": {
               borderRight: "1px solid #B0B4B4",
             },
           },
           "& .MuiDataGrid-columnHeaders": {
-            // backgroundColor: "#5BFF33",
             backgroundColor: "#41ddd3",
             borderBottom: "none",
             borderRadius: "0",
@@ -162,16 +137,7 @@ const ProductsList = () => {
           "& .MuiDataGrid-iconSeparator": {
             display: "none",
           },
-          "& .MuiDataGrid-virtualScroller": {
-            // backgroundColor: ,
-          },
-          "& .MuiDataGrid-footerContainer": {
-            // backgroundColor: ,
-            // color: ,
-            // borderTop: "none",
-          },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            // color: !important`,
             color: "#38BDB5",
             fontFamily: "Inter",
             fontSize: "14px",
@@ -190,7 +156,6 @@ const ProductsList = () => {
               alignItems: "center",
             },
           "& .MuiSelect-nativeInput": {
-            // height: "48px",
             display: "flex",
             alignItems: "center",
           },
@@ -211,7 +176,6 @@ const ProductsList = () => {
           rows={products || []}
           columns={columns}
           rowCount={(products && totalProducts) || 0}
-          // rowsPerPageOptions={[20, 50, 100]}
           pageSizeOptions={[5, 100]}
           pagination
           page={page}
@@ -240,18 +204,18 @@ const ProductsList = () => {
 };
 
 ProductsList.propTypes = {
-  products: PropTypes.any,
-  isLoading: PropTypes.any,
-  page: PropTypes.any,
-  setPage: PropTypes.any,
-  pageSize: PropTypes.any,
-  setPageSize: PropTypes.any,
-  sort: PropTypes.any,
-  setSort: PropTypes.any,
-  search: PropTypes.any,
-  setSearch: PropTypes.any,
-  searchInput: PropTypes.any,
-  setSearchInput: PropTypes.any,
+  products: PropTypes.array,
+  isLoading: PropTypes.bool,
+  page: PropTypes.number,
+  setPage: PropTypes.func,
+  pageSize: PropTypes.number,
+  setPageSize: PropTypes.func,
+  sort: PropTypes.object,
+  setSort: PropTypes.func,
+  search: PropTypes.string,
+  setSearch: PropTypes.func,
+  searchInput: PropTypes.string,
+  setSearchInput: PropTypes.func,
 };
 
 export default ProductsList;

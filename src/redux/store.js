@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import { registerReducer } from './Slices/AuthUserSlice'
 import { rootReducer } from "./Slices/rootSlice";
 import {
   persistStore,
@@ -27,7 +26,6 @@ export const store = configureStore({
   reducer: {
     user: persistReducer(userPersistConfig, userReducer),
     root: rootReducer,
-    // transactionsSummary: transactionsSummaryReducer,
     modal: modalReducer,
     customers: customersReducer,
     products: productsReducer,

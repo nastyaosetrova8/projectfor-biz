@@ -1,9 +1,13 @@
-import { GridToolbarColumnsButton, GridToolbarContainer, GridToolbarDensitySelector, GridToolbarExport } from "@mui/x-data-grid";
+import {
+  GridToolbarColumnsButton,
+  GridToolbarContainer,
+  GridToolbarDensitySelector,
+  GridToolbarExport,
+} from "@mui/x-data-grid";
 import PropTypes from "prop-types";
 import FlexBetween from "../FlexBetween/FlexBetween";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { Search } from "@mui/icons-material";
-
 
 const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
   return (
@@ -17,10 +21,8 @@ const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
         <TextField
           label="Search..."
           sx={{ mb: "0.5rem", width: "15rem" }}
-
           onChange={(e) => setSearchInput(e.target.value)}
           value={searchInput}
-
           variant="standard"
           InputProps={{
             endAdornment: (
@@ -43,9 +45,9 @@ const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
 };
 
 DataGridCustomToolbar.propTypes = {
-    searchInput: PropTypes.any,
-    setSearchInput: PropTypes.any,
-    setSearch: PropTypes.any,
-  };
+  searchInput: PropTypes.string,
+  setSearchInput: PropTypes.func,
+  setSearch: PropTypes.func,
+};
 
 export default DataGridCustomToolbar;

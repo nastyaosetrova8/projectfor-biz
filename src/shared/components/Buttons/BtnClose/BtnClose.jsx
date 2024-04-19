@@ -3,11 +3,9 @@ import { AiOutlineCloseS, BtnCloseS } from "./BtnCloseStyled";
 
 const BtnClose = ({ onClick, type }) => {
   return (
-    <>
-      <BtnCloseS type={type} onClick={onClick}>
-        <AiOutlineCloseS />
-      </BtnCloseS>
-    </>
+    <BtnCloseS type={type} onClick={onClick}>
+      <AiOutlineCloseS />
+    </BtnCloseS>
   );
 };
 
