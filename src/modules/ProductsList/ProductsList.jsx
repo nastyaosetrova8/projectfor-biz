@@ -18,8 +18,8 @@ const ProductsList = () => {
   const isAuth = useSelector(selectIsAuth);
   const isLoading = useSelector(selectIsLoading);
 
-  const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(5);
+  // const [page, setPage] = useState(0);
+  // const [pageSize, setPageSize] = useState(5);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
@@ -36,13 +36,13 @@ const ProductsList = () => {
     if (!isAuth) return;
     dispatch(
       getProductsThunk({
-        page: page,
-        pageSize: pageSize,
+        page: paginationModel.page,
+        pageSize: paginationModel.pageSize,
         sort: JSON.stringify(sort),
         search,
       })
     );
-  }, [dispatch, isAuth, page, pageSize, search, sort]);
+  }, [dispatch, isAuth, paginationModel, search, sort]);
 
   const handleEdit = (row) => {
     dispatch(saveId(row._id));
@@ -176,19 +176,27 @@ const ProductsList = () => {
           rows={products || []}
           columns={columns}
           rowCount={(products && totalProducts) || 0}
+          // rowCount={rowCount}
+          // onRowCountChange
           pageSizeOptions={[5, 100]}
           pagination
-          page={page}
-          pageSize={pageSize}
-          paginationMode="server"
-          sortingMode="server"
+          // page={page}
+          // pageSize={pageSize}
           paginationModel={paginationModel}
-          onPaginationModelChange={(newpaginationModel) =>
-            setPaginationModel(newpaginationModel)
-          }
-          onPageChange={(newPage) => setPage(newPage)}
-          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+          paginationMode="server"
+          // sortingMode="server"
+          // onPaginationModelChange={(newpaginationModel) =>
+          //   setPaginationModel(newpaginationModel)
+          // }
+          // onPageChange={(newPage) => setPage(newPage)}
+          // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+          // onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+          // ------------------------------------------------
+          onPaginationModelChange={setPaginationModel}
+          // onPageChange={(page) => setPage(page)}
+          // onPageSizeChange={(pageSize) => setPageSize(pageSize)}
+          // onSortModelChange={(sort) => setSort(...sort)}
+          // ----------------------------------------------
           slots={{ toolbar: DataGridCustomToolbar }}
           slotProps={{
             toolbar: { searchInput, setSearchInput, setSearch },
