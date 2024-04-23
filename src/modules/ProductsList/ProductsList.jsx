@@ -18,8 +18,6 @@ const ProductsList = () => {
   const isAuth = useSelector(selectIsAuth);
   const isLoading = useSelector(selectIsLoading);
 
-  // const [page, setPage] = useState(0);
-  // const [pageSize, setPageSize] = useState(5);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
@@ -176,27 +174,20 @@ const ProductsList = () => {
           rows={products || []}
           columns={columns}
           rowCount={(products && totalProducts) || 0}
-          // rowCount={rowCount}
           // onRowCountChange
           pageSizeOptions={[5, 100]}
           pagination
-          // page={page}
-          // pageSize={pageSize}
           paginationModel={paginationModel}
           paginationMode="server"
           // sortingMode="server"
+          // -----------------------------------------------
           // onPaginationModelChange={(newpaginationModel) =>
           //   setPaginationModel(newpaginationModel)
           // }
-          // onPageChange={(newPage) => setPage(newPage)}
-          // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
           // onSortModelChange={(newSortModel) => setSort(...newSortModel)}
           // ------------------------------------------------
           onPaginationModelChange={setPaginationModel}
-          // onPageChange={(page) => setPage(page)}
-          // onPageSizeChange={(pageSize) => setPageSize(pageSize)}
           // onSortModelChange={(sort) => setSort(...sort)}
-          // ----------------------------------------------
           slots={{ toolbar: DataGridCustomToolbar }}
           slotProps={{
             toolbar: { searchInput, setSearchInput, setSearch },
