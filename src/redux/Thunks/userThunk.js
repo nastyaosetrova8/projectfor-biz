@@ -5,7 +5,7 @@ import {
   loginUser,
   registerUser,
   setToken,
-  updateUser,
+  // updateUser,
 } from "../../services/authApi";
 
 export const registerUserThunk = createAsyncThunk(
@@ -52,18 +52,6 @@ export const logOutUserThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const data = await logOutUser();
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
-    }
-  }
-);
-
-export const updateUserThunk = createAsyncThunk(
-  "user/update",
-  async (userData, thunkAPI) => {
-    try {
-      const data = await updateUser(userData);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

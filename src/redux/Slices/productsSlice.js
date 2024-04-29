@@ -5,6 +5,7 @@ import {
   getProductsThunk,
 } from "../Thunks/ProductsThunk";
 import { initialProductsState } from "../initialState";
+import { handlePending, handleRejected } from "./rootSlice";
 
 const productsSlice = createSlice({
   name: "products",
@@ -27,7 +28,12 @@ const productsSlice = createSlice({
         if (index !== -1) {
           state.products[index] = payload;
         }
-      }),
+      })
+      .addMatcher((action) => action.type.endsWith("/pending"), handlePending)
+      .addMatcher(
+        (action) => action.type.endsWith("/rejected"),
+        handleRejected
+      ),
 });
 
 export const productsReducer = productsSlice.reducer;

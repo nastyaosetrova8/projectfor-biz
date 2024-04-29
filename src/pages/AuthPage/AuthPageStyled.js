@@ -10,5 +10,6 @@ export const AuthPageContainer = styled.div`
   @media screen and (max-width: 1440px) {
     justify-content: flex-start;
     align-items: flex-start;
+    margin-bottom: 40px;
   }
 `;

@@ -1,16 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectProducts, selectSavedId } from "../../redux/selectors";
-import {
-  deleteProductThunk,
-  getProductsThunk,
-} from "../../redux/Thunks/ProductsThunk";
+import { deleteProductThunk } from "../../redux/Thunks/ProductsThunk";
 import {
   notifyDeleteSuccess,
   notifyError,
 } from "../../shared/components/NotificationToastify/Toasts";
 import { saveId, toggleShowModal } from "../../redux/Slices/modalSlice";
 import { BtnsWrapper, ModalTitle, StyledModal } from "./AllModalFormsStyled";
-import { useState } from "react";
 import BtnConfirm from "../../shared/components/Buttons/BtnConfirm/BtnConfirm";
 import BtnClose from "../../shared/components/Buttons/BtnClose/BtnClose";
 
@@ -19,33 +15,33 @@ const DeleteForm = () => {
   const products = useSelector(selectProducts);
   const productId = useSelector(selectSavedId);
   const currentProduct = products.find((item) => productId === item._id);
-  const idCurrentProduct = currentProduct._id;
+  // const idCurrentProduct = currentProduct._id;
 
-  const [page] = useState(0);
-  const [pageSize] = useState(5);
-  const [sort] = useState({});
-  const [search] = useState("");
+  // const [page] = useState(0);
+  // const [pageSize] = useState(5);
+  // const [sort] = useState({});
+  // const [search] = useState("");
 
-  const handleClickBtnClose = () => {
+  function handleClickBtnClose() {
     document.body.classList.remove("no-scroll");
     dispatch(toggleShowModal(""));
     dispatch(saveId(null));
-  };
+  }
 
   const handleDelete = () => {
-    dispatch(deleteProductThunk(idCurrentProduct))
+    dispatch(deleteProductThunk(productId))
       .unwrap()
-      .then(({ currentProduct }) => {
-        dispatch(
-          getProductsThunk({
-            page: page,
-            pageSize: pageSize,
-            sort: JSON.stringify(sort),
-            search,
-          })
-        );
+      .then(() => {
+        // dispatch(
+        //   getProductsThunk({
+        //     page: page,
+        //     pageSize: pageSize,
+        //     sort: JSON.stringify(sort),
+        //     search,
+        //   })
+        // );
 
-        notifyDeleteSuccess(currentProduct);
+        notifyDeleteSuccess();
         dispatch(toggleShowModal());
       })
       .catch((error) => {

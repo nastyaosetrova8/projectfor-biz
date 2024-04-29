@@ -12,5 +12,9 @@ export const notifyEditSuccess = () => toast.success("Edited successfully!");
 export const notifyDeleteSuccess = () => toast.success("Deleted successfully!");
 
 export const notifyError = (error) => toast.error(`${error.message}`);
+export const notifyTokenExpired = (error) =>
+  toast.error(
+    `The token has expired. Please log in again to continue. ${error.message}`
+  );
 
 export const notifyInfo = () => toast.info("Please _ to continue");

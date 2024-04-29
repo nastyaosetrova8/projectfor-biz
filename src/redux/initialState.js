@@ -6,6 +6,7 @@ export const initialRootState = {
 export const initialUserState = {
   user: { name: null, email: null, _id: null },
   token: null,
+  isLoggedIn: false,
   isRefreshing: false,
   avatar: null,
 };

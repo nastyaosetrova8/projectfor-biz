@@ -174,20 +174,24 @@ const ProductsList = () => {
           rows={products || []}
           columns={columns}
           rowCount={(products && totalProducts) || 0}
-          // onRowCountChange
+          onRowCountChange
           pageSizeOptions={[5, 100]}
           pagination
           paginationModel={paginationModel}
           paginationMode="server"
-          // sortingMode="server"
+          sortingMode="server"
           // -----------------------------------------------
           // onPaginationModelChange={(newpaginationModel) =>
           //   setPaginationModel(newpaginationModel)
           // }
           // onSortModelChange={(newSortModel) => setSort(...newSortModel)}
           // ------------------------------------------------
-          onPaginationModelChange={setPaginationModel}
-          // onSortModelChange={(sort) => setSort(...sort)}
+
+          // onPaginationModelChange={setPaginationModel}
+          onPaginationModelChange={(newpaginationModel) =>
+            setPaginationModel(newpaginationModel)
+          }
+          onSortModelChange={(sort) => setSort(...sort)}
           slots={{ toolbar: DataGridCustomToolbar }}
           slotProps={{
             toolbar: { searchInput, setSearchInput, setSearch },

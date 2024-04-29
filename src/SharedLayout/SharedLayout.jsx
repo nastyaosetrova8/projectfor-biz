@@ -12,25 +12,27 @@ const SharedLayout = () => {
   const user = useSelector(selectUser);
 
   return (
-    <Box display={isNonDesktop ? "block" : "flex"} width="100%" height="100%">
-      <Sidebar
-        user={user || {}}
-        isNonDesktop={isNonDesktop}
-        drawerWidth="84px"
-        isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-      />
-
-      <Box flexGrow={1}>
-        <Navbar
+    <>
+      <Box display={isNonDesktop ? "block" : "flex"} width="100%" height="100%">
+        <Sidebar
           user={user || {}}
+          isNonDesktop={isNonDesktop}
+          drawerWidth="84px"
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
-          isNonDesktop={isNonDesktop}
         />
-        <Outlet />
+
+        <Box flexGrow={1}>
+          <Navbar
+            user={user || {}}
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+            isNonDesktop={isNonDesktop}
+          />
+          <Outlet />
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

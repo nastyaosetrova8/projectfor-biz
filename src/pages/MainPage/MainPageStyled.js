@@ -8,7 +8,7 @@ export const MainPageContainer = styled.div`
   gap: 216px;
 
   @media screen and (max-width: 1440px) {
-    gap: 156px;
+    gap: 80px;
   }
 `;
 
@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 59px;
+    gap: 36px;
   }
 `;
 

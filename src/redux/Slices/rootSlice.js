@@ -11,8 +11,14 @@ export function handleRejected(state, { payload }) {
   state.error = payload;
 }
 
+// export function handleRejected(state, { error }) {
+//   state.isLoading = false;
+//   state.error = error.message;
+// }
+
 export function handleFulfilled(state) {
   state.isLoading = false;
+  // state.error = null;
 }
 
 const rootSlice = createSlice({

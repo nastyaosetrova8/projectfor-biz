@@ -31,7 +31,9 @@ export async function logOutUser() {
   return data;
 }
 
-export async function updateUser(userData) {
-  const { data } = await instance.patch("/users/update-user", userData);
-  return data;
-}
+// export async function updateUser(userData) {
+//   // const { data } = await instance.patch("/users/update-user", userData);
+//   const { data } = await instance.get("/users/update-user", userData);
+
+//   return data;
+// }

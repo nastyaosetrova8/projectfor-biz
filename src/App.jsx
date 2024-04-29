@@ -8,8 +8,8 @@ import PrivateRoute from "./Guard/PrivateRoute";
 import Loader from "./shared/components/Loader/Loader";
 import PublicRoute from "./Guard/PublicRoute";
 import NotificationToast from "./shared/components/NotificationToastify/NotificationToast";
-import MainPage from "./pages/MainPage/MainPage";
 
+const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage/AuthPage"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage/DashboardPage"));
 const CustomersPage = lazy(() => import("./pages/CustomersPage/CustomersPage"));
