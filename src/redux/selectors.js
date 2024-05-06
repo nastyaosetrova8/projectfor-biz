@@ -16,6 +16,8 @@ export const selectTotalCustomers = (state) => state.customers.total;
 
 export const selectProducts = (state) => state.products.products;
 export const selectTotalProducts = (state) => state.products.total;
+export const selectProductDeleted = (state) =>
+  Boolean(state.products.productDeleted);
 
 export const selectIsShowModal = (state) => state.modal.isShowModal;
 export const selectModalName = (state) => state.modal.modalName;

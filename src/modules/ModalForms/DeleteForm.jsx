@@ -41,8 +41,8 @@ const DeleteForm = () => {
         //   })
         // );
 
+        dispatch(toggleShowModal(""));
         notifyDeleteSuccess();
-        dispatch(toggleShowModal());
       })
       .catch((error) => {
         notifyError(error);
@@ -54,7 +54,8 @@ const DeleteForm = () => {
       <StyledModal>
         <BtnClose onClick={handleClickBtnClose} />
         <ModalTitle>
-          Are you shure you want to remove the {currentProduct.name} product?
+          Are you shure you want to remove the{" "}
+          {currentProduct && currentProduct.name} product?
         </ModalTitle>
 
         <BtnsWrapper>

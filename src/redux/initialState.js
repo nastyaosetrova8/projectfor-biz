@@ -20,6 +20,7 @@ export const initialListsState = {
 export const initialProductsState = {
   products: [],
   total: 0,
+  productDeleted: false,
 };
 
 export const initialModalState = {

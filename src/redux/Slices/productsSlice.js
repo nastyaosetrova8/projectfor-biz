@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   addProductThunk,
+  deleteProductThunk,
   editProductThunk,
   getProductsThunk,
 } from "../Thunks/ProductsThunk";
@@ -29,6 +30,13 @@ const productsSlice = createSlice({
           state.products[index] = payload;
         }
       })
+      .addCase(deleteProductThunk.fulfilled, (state, { payload }) => {
+        state.products = state.products.filter(
+          (item) => item._id !== payload._id
+        );
+        state.productDeleted = true;
+      })
+
       .addMatcher((action) => action.type.endsWith("/pending"), handlePending)
       .addMatcher(
         (action) => action.type.endsWith("/rejected"),

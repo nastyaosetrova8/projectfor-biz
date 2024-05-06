@@ -20,12 +20,10 @@ const userSlice = createSlice({
       .addCase(loginUserThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        // state.isLoggedIn = true;
       })
       .addCase(logOutUserThunk.fulfilled, (state) => {
         state.user = { name: null, email: null, _id: null };
         state.token = null;
-        // state.isLoggedIn = false;
         state.isRefreshing = false;
       })
 
@@ -39,7 +37,6 @@ const userSlice = createSlice({
       })
       .addCase(currentUserThunk.fulfilled, (state, action) => {
         state.user = action.payload;
-        // state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(currentUserThunk.rejected, (state, action) => {

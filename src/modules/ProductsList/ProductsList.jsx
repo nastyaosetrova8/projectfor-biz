@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectIsAuth,
   selectIsLoading,
+  selectProductDeleted,
   selectProducts,
   selectTotalProducts,
 } from "../../redux/selectors";
@@ -24,6 +25,7 @@ const ProductsList = () => {
 
   const products = useSelector(selectProducts);
   const totalProducts = useSelector(selectTotalProducts);
+  const productDeleted = useSelector(selectProductDeleted);
 
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
@@ -41,6 +43,26 @@ const ProductsList = () => {
       })
     );
   }, [dispatch, isAuth, paginationModel, search, sort]);
+
+  useEffect(() => {
+    if (productDeleted) {
+      dispatch(
+        getProductsThunk({
+          page: paginationModel.page,
+          pageSize: paginationModel.pageSize,
+          sort: JSON.stringify(sort),
+          search,
+        })
+      );
+    }
+  }, [
+    dispatch,
+    paginationModel.page,
+    paginationModel.pageSize,
+    productDeleted,
+    search,
+    sort,
+  ]);
 
   const handleEdit = (row) => {
     dispatch(saveId(row._id));
