@@ -1,4 +1,4 @@
-# A web application on React.
+# A web application on React.js.
 
 The database code for this project can be found at the link - https://github.com/nastyaosetrova8/db-projectfor.
 The back-end part is created on Node.js and deployed on Render.com hosting.
@@ -7,7 +7,7 @@ Projectfor-biz application displays information about the statistics of a medica
 Namely - data about products, with the ability to add, edit and delete, data about suppliers and customers.
 Also a summary of all data.
 
-It is necessary Log in to use the application.
+It is necessary Log in to use the application with login: nastyaosetrova8.8@gmail.com and password: 123456.
 
 <img width="518" alt="Знімок екрана 2024-05-11 о 10 15 15" src="https://github.com/nastyaosetrova8/projectfor-biz/assets/126395277/223b38cd-f858-45d0-a317-fbf163450af6">
 
