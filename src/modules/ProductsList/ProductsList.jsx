@@ -202,14 +202,6 @@ const ProductsList = () => {
           paginationModel={paginationModel}
           paginationMode="server"
           sortingMode="server"
-          // -----------------------------------------------
-          // onPaginationModelChange={(newpaginationModel) =>
-          //   setPaginationModel(newpaginationModel)
-          // }
-          // onSortModelChange={(newSortModel) => setSort(...newSortModel)}
-          // ------------------------------------------------
-
-          // onPaginationModelChange={setPaginationModel}
           onPaginationModelChange={(newpaginationModel) =>
             setPaginationModel(newpaginationModel)
           }
