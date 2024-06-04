@@ -15,12 +15,6 @@ const DeleteForm = () => {
   const products = useSelector(selectProducts);
   const productId = useSelector(selectSavedId);
   const currentProduct = products.find((item) => productId === item._id);
-  // const idCurrentProduct = currentProduct._id;
-
-  // const [page] = useState(0);
-  // const [pageSize] = useState(5);
-  // const [sort] = useState({});
-  // const [search] = useState("");
 
   function handleClickBtnClose() {
     document.body.classList.remove("no-scroll");
@@ -32,15 +26,6 @@ const DeleteForm = () => {
     dispatch(deleteProductThunk(productId))
       .unwrap()
       .then(() => {
-        // dispatch(
-        //   getProductsThunk({
-        //     page: page,
-        //     pageSize: pageSize,
-        //     sort: JSON.stringify(sort),
-        //     search,
-        //   })
-        // );
-
         dispatch(toggleShowModal(""));
         notifyDeleteSuccess();
       })
